@@ -11,7 +11,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  
+
   &[data-a11y="true"] {
     font-size: 18px;
   }
@@ -34,16 +34,17 @@ svg {
 }
 
 a {
-  color: $color-mint;
+  color: $color-mint-dark;
   text-decoration: none;
   transition: color $transition;
 
   &:hover {
-    color: $color-mint-dark;
+    color: $color-mint;
   }
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -61,7 +62,15 @@ select {
   font-size: 1rem;
 }
 
-h1, h2, h3, h4 {
+:focus-visible {
+  outline: 3px solid $color-mint;
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4 {
   font-family: $font-heading;
   line-height: 1.25;
   font-weight: 600;
@@ -84,4 +93,18 @@ h1, h2, h3, h4 {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

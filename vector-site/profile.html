@@ -25,7 +25,7 @@
         </span>
       </a>
 
-      <nav class="nav" id="nav">
+      <nav class="nav" id="nav" aria-label="Основная навигация">
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link">Главная</a></li>
           <li><a href="vacancies.html" class="nav__link">Вакансии</a></li>
@@ -38,9 +38,9 @@
       </nav>
 
       <div class="header__actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span>◐</span></button>
-        <button class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих"><span>Аа</span></button>
-        <button class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span aria-hidden="true">◐</span></button>
+        <button type="button" class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих"><span>Аа</span></button>
+        <button type="button" class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
@@ -55,9 +55,9 @@
 
     <section class="profile-page">
       <div class="container">
-        <div class="profile-tabs">
-          <button class="profile-tab profile-tab--active" data-tab="applications">Мои отклики</button>
-          <button class="profile-tab" data-tab="favorites">Избранное</button>
+        <div class="profile-tabs" role="tablist" aria-label="Разделы личного кабинета">
+          <button type="button" class="profile-tab profile-tab--active" data-tab="applications">Мои отклики</button>
+          <button type="button" class="profile-tab" data-tab="favorites">Избранное</button>
         </div>
 
         <div class="profile-content" id="profileContent">
@@ -82,7 +82,7 @@
       </div>
       <div class="footer__contacts">
         <p>г. Минск, ул. Петруся Бровки, 14</p>
-        <p>+375 (29) 987-65-43</p>
+        <p>+375 (17) 123-45-67</p>
         <p>info@vektor.by</p>
       </div>
     </div>
@@ -93,26 +93,26 @@
 
   <script src="../js/theme.js"></script>
   <script src="../js/main.js"></script>
-    <script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
       const content = document.getElementById('profileContent');
       const tabs = document.querySelectorAll('.profile-tab');
 
-      // Загрузка данных из localStorage
       const applications = JSON.parse(localStorage.getItem('applications') || '[]');
       const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
-      // Загружаем XML, чтобы взять оттуда названия вакансий
       fetch('../data/vacancies.xml')
-        .then(res => res.text())
-        .then(str => {
+        .then((res) => {
+          if (!res.ok) throw new Error('Ошибка загрузки vacancies.xml');
+          return res.text();
+        })
+        .then((str) => {
           const parser = new DOMParser();
           const xml = parser.parseFromString(str, 'application/xml');
           const nodes = xml.querySelectorAll('vacancy');
-          
-          // Создаем объект для быстрого поиска: { "1": "Менеджер по продажам", "2": "Водитель" ... }
+
           const vacanciesData = {};
-          nodes.forEach(v => {
+          nodes.forEach((v) => {
             const id = v.querySelector('id')?.textContent;
             const title = v.querySelector('title')?.textContent;
             const company = v.querySelector('company')?.textContent;
@@ -121,68 +121,66 @@
             }
           });
 
-          // Теперь, когда данные есть, запускаем отрисовку
           initTabs(vacanciesData);
         })
-        .catch(err => {
+        .catch((err) => {
           console.error('Ошибка загрузки XML:', err);
-          // Если XML не загрузился, выводим хотя бы ID
-          initTabs({}); 
+          initTabs({});
         });
 
       function initTabs(vacanciesData) {
-        // Отрисовка откликов
         const renderApplications = () => {
           if (applications.length === 0) {
             content.innerHTML = '<p class="empty-state">У вас пока нет откликов. Перейдите в раздел <a href="vacancies.html">Вакансии</a>, чтобы найти работу.</p>';
             return;
           }
-          content.innerHTML = applications.map(app => {
-            // Берем название из XML, если не нашли — выводим "Вакансия #ID"
-            const vacancyInfo = vacanciesData[app.id];
-            const displayTitle = vacancyInfo ? vacancyInfo.title : `Вакансия #${app.id}`;
-            const displayCompany = vacancyInfo ? vacancyInfo.company : '';
+          content.innerHTML = applications
+            .map((app) => {
+              const vacancyInfo = vacanciesData[app.id];
+              const displayTitle = vacancyInfo ? vacancyInfo.title : `Вакансия #${app.id}`;
+              const displayCompany = vacancyInfo ? vacancyInfo.company : '';
 
-            return `
-              <div class="profile-item">
-                <div>
-                  <h3>${displayTitle}</h3>
-                  ${displayCompany ? `<p style="color: #00A88A; font-weight: 500; margin-bottom: 4px;">${displayCompany}</p>` : ''}
-                  <p>Отправлено: ${new Date(app.date).toLocaleDateString('ru-RU')}</p>
+              return `
+                <div class="profile-item">
+                  <div>
+                    <h3>${displayTitle}</h3>
+                    ${displayCompany ? `<p style="color: #00A88A; font-weight: 500; margin-bottom: 4px;">${displayCompany}</p>` : ''}
+                    <p>Отправлено: ${new Date(app.date).toLocaleDateString('ru-RU')}</p>
+                  </div>
+                  <span class="status status--pending">На рассмотрении</span>
                 </div>
-                <span class="status status--pending">На рассмотрении</span>
-              </div>
-            `;
-          }).join('');
+              `;
+            })
+            .join('');
         };
 
-        // Отрисовка избранного
         const renderFavorites = () => {
           if (favorites.length === 0) {
             content.innerHTML = '<p class="empty-state">В избранном пока пусто. Нажмите на 🤍 в карточке вакансии, чтобы сохранить её.</p>';
             return;
           }
-          content.innerHTML = favorites.map(id => {
-            const vacancyInfo = vacanciesData[id];
-            const displayTitle = vacancyInfo ? vacancyInfo.title : `Вакансия #${id}`;
-            const displayCompany = vacancyInfo ? vacancyInfo.company : '';
+          content.innerHTML = favorites
+            .map((id) => {
+              const vacancyInfo = vacanciesData[id];
+              const displayTitle = vacancyInfo ? vacancyInfo.title : `Вакансия #${id}`;
+              const displayCompany = vacancyInfo ? vacancyInfo.company : '';
 
-            return `
-              <div class="profile-item">
-                <div>
-                  <h3>${displayTitle}</h3>
-                  ${displayCompany ? `<p style="color: #00A88A; font-weight: 500;">${displayCompany}</p>` : ''}
+              return `
+                <div class="profile-item">
+                  <div>
+                    <h3>${displayTitle}</h3>
+                    ${displayCompany ? `<p style="color: #00A88A; font-weight: 500;">${displayCompany}</p>` : ''}
+                  </div>
+                  <a href="vacancies.html?id=${id}" class="btn btn--secondary">Перейти к вакансии</a>
                 </div>
-                <a href="vacancies.html?id=${id}" class="btn btn--secondary">Перейти к вакансии</a>
-              </div>
-            `;
-          }).join('');
+              `;
+            })
+            .join('');
         };
 
-        // Переключение вкладок
-        tabs.forEach(tab => {
+        tabs.forEach((tab) => {
           tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('profile-tab--active'));
+            tabs.forEach((t) => t.classList.remove('profile-tab--active'));
             tab.classList.add('profile-tab--active');
 
             if (tab.dataset.tab === 'applications') renderApplications();
@@ -190,7 +188,6 @@
           });
         });
 
-        // Инициализация (показываем вкладку "Мои отклики" по умолчанию)
         renderApplications();
       }
     });

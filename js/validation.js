@@ -2,18 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('vacancyForm');
   if (!form) return;
 
-  // --- Вспомогательные функции для вывода/удаления ошибок ---
   const showError = (field, message) => {
     field.classList.add('form__input--error');
-    
-    // Ищем контейнер для ошибки. Если поле в сетке (form__row), 
-    // лучше выводить ошибку сразу под полем, а не в конце группы.
     let errorEl = field.parentElement.querySelector('.form__error');
-    
+
     if (!errorEl) {
       errorEl = document.createElement('span');
       errorEl.className = 'form__error';
-      // Вставляем ошибку сразу после инпута
       field.insertAdjacentElement('afterend', errorEl);
     }
     errorEl.textContent = message;
@@ -27,7 +22,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // --- Валидаторы для каждого поля ---
+  const clearSuccess = () => {
+    const successEl = form.querySelector('.form__success');
+    if (successEl) successEl.remove();
+  };
+
+  const showSuccess = (message) => {
+    clearSuccess();
+    const successEl = document.createElement('div');
+    successEl.className = 'form__success';
+    successEl.setAttribute('role', 'status');
+    successEl.textContent = message;
+    form.appendChild(successEl);
+  };
+
   const validators = {
     jobTitle: (value) => {
       if (!value.trim()) return 'Укажите название должности';
@@ -40,14 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return null;
     },
     salary: (value) => {
-      if (!value.trim()) return null; // Необязательное поле
-      
-      // Убираем все пробелы для удобства проверки
+      if (!value.trim()) return null;
       const cleanValue = value.replace(/\s/g, '');
       const salaryPattern = /^(от)?\d{1,6}([-–]\d{1,6})?$/i;
-      
       if (!salaryPattern.test(cleanValue)) {
-        return 'Введите корректную сумму цифрами (например: 50, от 1500 или 1000-2000)';
+        return 'Введите корректную сумму цифрами (например: 1500, от 1500 или 1000-2000)';
       }
       return null;
     },
@@ -79,25 +84,23 @@ document.addEventListener('DOMContentLoaded', () => {
       if (phoneClean.startsWith('+7') || phoneClean.startsWith('8')) {
         if (phoneClean.startsWith('8')) phoneClean = '+7' + phoneClean.substring(1);
         if (phoneClean.startsWith('7')) phoneClean = '+' + phoneClean;
-        const ruMobilePattern = /^\+79\d{9}$/;
         const ruGeneralPattern = /^\+7\d{10}$/;
-        if (ruMobilePattern.test(phoneClean)) {
-            return null;
-        } else if (ruGeneralPattern.test(phoneClean)) {
-            return null;
-        } else {
-            return 'Некорректный номер РФ. Формат: +7 (9XX) XXX-XX-XX';
+        if (ruGeneralPattern.test(phoneClean)) {
+          return null;
         }
+        return 'Некорректный номер РФ. Формат: +7 (9XX) XXX-XX-XX';
       }
       return 'Введите номер с кодом страны: +375 (Беларусь) или +7 (Россия)';
     }
   };
+
   const fields = form.querySelectorAll('.form__input, .form__textarea, .form__select');
-  
-  fields.forEach(field => {
+
+  fields.forEach((field) => {
     const fieldName = field.name;
     field.addEventListener('input', () => {
       clearError(field);
+      clearSuccess();
     });
     field.addEventListener('blur', () => {
       if (validators[fieldName]) {
@@ -114,8 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     let isValid = true;
+    clearSuccess();
 
-    fields.forEach(field => {
+    fields.forEach((field) => {
       const fieldName = field.name;
       if (validators[fieldName]) {
         const errorMessage = validators[fieldName](field.value);
@@ -129,15 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (isValid) {
-      // Здесь можно добавить отправку данных на сервер
-      alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.');
       form.reset();
-      
-      // Очищаем все ошибки после сброса
-      form.querySelectorAll('.form__error').forEach(el => el.remove());
-      form.querySelectorAll('.form__input--error').forEach(el => el.classList.remove('form__input--error'));
+      form.querySelectorAll('.form__error').forEach((el) => el.remove());
+      form.querySelectorAll('.form__input--error').forEach((el) => el.classList.remove('form__input--error'));
+      showSuccess('Спасибо! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.');
     } else {
-      // Находим первое поле с ошибкой и скроллим к нему
       const firstError = form.querySelector('.form__error');
       if (firstError) {
         firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });

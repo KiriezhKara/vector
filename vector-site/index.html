@@ -6,20 +6,15 @@
   <meta name="description" content="Центр занятости «Вектор» — поиск работы, услуги службы занятости, мероприятия">
   <title>Вектор — Центр занятости</title>
 
-  <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Стили -->
   <link rel="stylesheet" href="../css/styles.css">
-
-  <!-- Фавикон -->
   <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
-  <!-- ===================== ШАПКА ===================== -->
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="index.html" class="logo">
@@ -30,7 +25,7 @@
         </span>
       </a>
 
-      <nav class="nav" id="nav">
+      <nav class="nav" id="nav" aria-label="Основная навигация">
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link nav__link--active">Главная</a></li>
           <li><a href="vacancies.html" class="nav__link">Вакансии</a></li>
@@ -43,23 +38,20 @@
       </nav>
 
       <div class="header__actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Тема">
-          <span class="theme-toggle__icon">◐</span>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Тема">
+          <span class="theme-toggle__icon" aria-hidden="true">◐</span>
         </button>
-        <button class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих" title="Для слабовидящих">
+        <button type="button" class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих" title="Для слабовидящих">
           <span>Аа</span>
         </button>
-        <button class="burger" id="burger" aria-label="Открыть меню">
+        <button type="button" class="burger" id="burger" aria-label="Открыть меню">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- ===================== ГЛАВНЫЙ КОНТЕНТ ===================== -->
   <main>
-
-    <!-- Первый экран -->
     <section class="hero">
       <div class="container hero__inner">
         <div class="hero__content">
@@ -67,10 +59,10 @@
           <p class="hero__subtitle">Актуальные вакансии, услуги службы занятости и помощь в трудоустройстве</p>
 
           <form class="search-form" action="vacancies.html" method="get">
-            <input 
-              type="search" 
-              name="q" 
-              class="search-form__input" 
+            <input
+              type="search"
+              name="q"
+              class="search-form__input"
               placeholder="Должность, компания или ключевое слово"
               aria-label="Поиск вакансий"
             >
@@ -78,25 +70,19 @@
           </form>
         </div>
 
-         <div class="hero__visual">
-          <svg class="hero__svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Фоновая сетка (круги) -->
+        <div class="hero__visual">
+          <svg class="hero__svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="График карьерного роста">
             <circle cx="200" cy="200" r="180" stroke="rgba(0, 201, 167, 0.1)" stroke-width="2" stroke-dasharray="10 10"/>
             <circle cx="200" cy="200" r="130" stroke="rgba(0, 201, 167, 0.2)" stroke-width="2"/>
-            
-            <!-- Стрелка карьерного роста -->
+
             <path class="hero__svg-line" d="M80 280 L160 200 L220 240 L320 120" stroke="#00C9A7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            
-            <!-- Острие стрелки -->
             <path d="M270 120 L320 120 L320 170" stroke="#00C9A7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            
-            <!-- Точки на графике -->
+
             <circle cx="80" cy="280" r="10" fill="#F4FFFC" stroke="#00C9A7" stroke-width="4"/>
             <circle cx="160" cy="200" r="10" fill="#F4FFFC" stroke="#00C9A7" stroke-width="4"/>
             <circle cx="220" cy="240" r="10" fill="#F4FFFC" stroke="#00C9A7" stroke-width="4"/>
             <circle cx="320" cy="120" r="12" fill="#00C9A7" class="hero__svg-pulse"/>
 
-            <!-- Иконка портфеля (символ работы) -->
             <rect x="140" y="310" width="120" height="70" rx="10" fill="#1A2422" stroke="#00C9A7" stroke-width="4"/>
             <path d="M180 310 V290 C180 280 190 270 200 270 C210 270 220 280 220 290 V310" stroke="#00C9A7" stroke-width="4" stroke-linecap="round"/>
             <rect x="190" y="330" width="20" height="15" rx="4" fill="#00C9A7"/>
@@ -105,31 +91,29 @@
       </div>
     </section>
 
-        <!-- Счётчики -->
     <section class="stats">
       <div class="container">
         <div class="stats__grid">
           <div class="stats__item">
-            <span class="stats__number" data-target="900">0</span>
+            <span class="stats__number" data-target="50">0</span>
             <span class="stats__label">Актуальных вакансий</span>
           </div>
           <div class="stats__item">
-            <span class="stats__number" data-target="35">0</span>
+            <span class="stats__number" data-target="20">0</span>
             <span class="stats__label">Сфер деятельности</span>
           </div>
           <div class="stats__item">
-            <span class="stats__number" data-target="250">0</span>
+            <span class="stats__number" data-target="50">0</span>
             <span class="stats__label">Компаний-партнёров</span>
           </div>
           <div class="stats__item">
-            <span class="stats__number" data-target="12">0</span>
-            <span class="stats__label">Мероприятий в месяц</span>
+            <span class="stats__number" data-target="4">0</span>
+            <span class="stats__label">Мероприятий в афише</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ИНТЕРАКТИВНЫЙ КАРЬЕРНЫЙ МАРШРУТ -->
     <section class="career-path">
       <div class="container">
         <div class="section-header">
@@ -138,41 +122,38 @@
         </div>
 
         <div class="career-path__wrap">
-          <!-- SVG-линия маршрута -->
-          <svg class="career-path__svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
-            <path class="career-path__line" d="M 50 100 C 200 20, 300 180, 500 100 S 800 20, 950 100" 
+          <svg class="career-path__svg" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
+            <path class="career-path__line" d="M 50 100 C 200 20, 300 180, 500 100 S 800 20, 950 100"
                   stroke="#00C9A7" stroke-width="4" stroke-dasharray="12 12" fill="none"/>
           </svg>
 
-          <!-- Этапы (кнопки) -->
           <div class="career-path__steps">
-            <button class="career-step" data-step="1" data-text="Определите свои сильные стороны с помощью профессиональных консультантов.">
-              <span class="career-step__icon">🧭</span>
+            <button type="button" class="career-step" data-step="1" data-text="Определите свои сильные стороны с помощью профессиональных консультантов.">
+              <span class="career-step__icon" aria-hidden="true">🧭</span>
               <span class="career-step__label">1. Профориентация</span>
             </button>
-            
-            <button class="career-step" data-step="2" data-text="Пройдите бесплатное обучение по востребованной профессии.">
-              <span class="career-step__icon">🎓</span>
+
+            <button type="button" class="career-step" data-step="2" data-text="Пройдите бесплатное обучение по востребованной профессии.">
+              <span class="career-step__icon" aria-hidden="true">🎓</span>
               <span class="career-step__label">2. Обучение</span>
             </button>
-            
-            <button class="career-step" data-step="3" data-text="Найдите подходящую вакансию и откликнитесь в один клик.">
-              <span class="career-step__icon">🔍</span>
+
+            <button type="button" class="career-step" data-step="3" data-text="Найдите подходящую вакансию и откликнитесь в один клик.">
+              <span class="career-step__icon" aria-hidden="true">🔍</span>
               <span class="career-step__label">3. Поиск работы</span>
             </button>
-            
-            <button class="career-step" data-step="4" data-text="Подготовьтесь к собеседованию с нашими специалистами.">
-              <span class="career-step__icon">🤝</span>
+
+            <button type="button" class="career-step" data-step="4" data-text="Подготовьтесь к собеседованию с нашими специалистами.">
+              <span class="career-step__icon" aria-hidden="true">🤝</span>
               <span class="career-step__label">4. Собеседование</span>
             </button>
-            
-            <button class="career-step" data-step="5" data-text="Поздравляем! Вы успешно трудоустроены.">
-              <span class="career-step__icon">💼</span>
+
+            <button type="button" class="career-step" data-step="5" data-text="Поздравляем! Вы успешно трудоустроены.">
+              <span class="career-step__icon" aria-hidden="true">💼</span>
               <span class="career-step__label">5. Работа</span>
             </button>
           </div>
 
-          <!-- Блок подсказки -->
           <div class="career-path__tooltip" id="careerTooltip">
             <p class="career-path__tooltip-text">Выберите этап на маршруте</p>
           </div>
@@ -180,7 +161,6 @@
       </div>
     </section>
 
-    <!-- Услуги -->
     <section class="services-preview">
       <div class="container">
         <div class="section-header">
@@ -190,25 +170,25 @@
 
         <div class="services-preview__grid">
           <article class="service-card">
-            <div class="service-card__icon">📋</div>
+            <div class="service-card__icon" aria-hidden="true">📋</div>
             <h3 class="service-card__title">Постановка на учёт</h3>
             <p class="service-card__text">Регистрация в качестве безработного и получение пособия</p>
           </article>
 
           <article class="service-card">
-            <div class="service-card__icon">🎓</div>
+            <div class="service-card__icon" aria-hidden="true">🎓</div>
             <h3 class="service-card__title">Профессиональное обучение</h3>
             <p class="service-card__text">Курсы по востребованным специальностям за счёт бюджета</p>
           </article>
 
           <article class="service-card">
-            <div class="service-card__icon">💼</div>
+            <div class="service-card__icon" aria-hidden="true">💼</div>
             <h3 class="service-card__title">Временные работы</h3>
             <p class="service-card__text">Оплачиваемые общественные и сезонные работы</p>
           </article>
 
           <article class="service-card">
-            <div class="service-card__icon">🚀</div>
+            <div class="service-card__icon" aria-hidden="true">🚀</div>
             <h3 class="service-card__title">Помощь бизнесу</h3>
             <p class="service-card__text">Поддержка при открытии собственного дела</p>
           </article>
@@ -216,7 +196,6 @@
       </div>
     </section>
 
-    <!-- Свежие вакансии -->
     <section class="vacancies-preview">
       <div class="container">
         <div class="section-header">
@@ -230,18 +209,15 @@
       </div>
     </section>
 
-        <!-- Призыв к действию -->
     <section class="cta">
       <div class="container cta__inner">
         <h2 class="cta__title">Готовы найти работу мечты?</h2>
-        <p class="cta__text">Более 900 актуальных вакансий ждут вас прямо сейчас</p>
+        <p class="cta__text">Актуальные вакансии ждут вас прямо сейчас</p>
         <a href="vacancies.html" class="btn btn--primary">Перейти к вакансиям</a>
       </div>
     </section>
-
   </main>
 
-  <!-- ===================== ПОДВАЛ ===================== -->
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
@@ -261,7 +237,7 @@
 
       <div class="footer__contacts">
         <p>г. Минск, ул. Петруся Бровки, 14</p>
-        <p>+375 (29) 987-65-43</p>
+        <p>+375 (17) 123-45-67</p>
         <p>info@vektor.by</p>
       </div>
     </div>

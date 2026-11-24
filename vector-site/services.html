@@ -25,7 +25,7 @@
         </span>
       </a>
 
-      <nav class="nav" id="nav">
+      <nav class="nav" id="nav" aria-label="Основная навигация">
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link">Главная</a></li>
           <li><a href="vacancies.html" class="nav__link">Вакансии</a></li>
@@ -38,9 +38,9 @@
       </nav>
 
       <div class="header__actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span>◐</span></button>
-        <button class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих"><span>Аа</span></button>
-        <button class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span aria-hidden="true">◐</span></button>
+        <button type="button" class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих"><span>Аа</span></button>
+        <button type="button" class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
@@ -77,7 +77,7 @@
       </div>
       <div class="footer__contacts">
         <p>г. Минск, ул. Петруся Бровки, 14</p>
-        <p>+375 (29) 987-65-43</p>
+        <p>+375 (17) 123-45-67</p>
         <p>info@vektor.by</p>
       </div>
     </div>
@@ -89,36 +89,40 @@
   <script src="../js/theme.js"></script>
   <script src="../js/main.js"></script>
   <script>
-    // Загрузка услуг
     document.addEventListener('DOMContentLoaded', () => {
       const list = document.getElementById('servicesList');
       if (!list) return;
 
       fetch('../data/services.xml')
-        .then(res => res.text())
-        .then(str => {
+        .then((res) => {
+          if (!res.ok) throw new Error('Ошибка загрузки services.xml');
+          return res.text();
+        })
+        .then((str) => {
           const xml = new DOMParser().parseFromString(str, 'application/xml');
           const services = xml.querySelectorAll('service');
 
-          list.innerHTML = Array.from(services).map(s => {
-            const title = s.querySelector('title')?.textContent || '';
-            const icon = s.querySelector('icon')?.textContent || '';
-            const short = s.querySelector('short')?.textContent || '';
-            const description = s.querySelector('description')?.textContent || '';
+          list.innerHTML = Array.from(services)
+            .map((s) => {
+              const title = s.querySelector('title')?.textContent || '';
+              const icon = s.querySelector('icon')?.textContent || '';
+              const short = s.querySelector('short')?.textContent || '';
+              const description = s.querySelector('description')?.textContent || '';
 
-            return `
-              <details class="service-accordion">
-                <summary class="service-accordion__summary">
-                  <span class="service-accordion__icon">${icon}</span>
-                  <span class="service-accordion__title">${title}</span>
-                  <span class="service-accordion__short">${short}</span>
-                </summary>
-                <div class="service-accordion__body">
-                  <p>${description}</p>
-                </div>
-              </details>
-            `;
-          }).join('');
+              return `
+                <details class="service-accordion">
+                  <summary class="service-accordion__summary">
+                    <span class="service-accordion__icon" aria-hidden="true">${icon}</span>
+                    <span class="service-accordion__title">${title}</span>
+                    <span class="service-accordion__short">${short}</span>
+                  </summary>
+                  <div class="service-accordion__body">
+                    <p>${description}</p>
+                  </div>
+                </details>
+              `;
+            })
+            .join('');
         })
         .catch(() => {
           list.innerHTML = '<p>Не удалось загрузить услуги</p>';

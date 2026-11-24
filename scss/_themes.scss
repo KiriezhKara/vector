@@ -21,7 +21,7 @@
   }
 
   .nav__link {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.72);
 
     &:hover {
       color: #FFFFFF;
@@ -31,6 +31,16 @@
     &--active {
       color: #FFFFFF;
       background-color: rgba(0, 201, 167, 0.2);
+    }
+  }
+
+  .btn--secondary {
+    border-color: $color-mint;
+    color: $color-mint;
+
+    &:hover {
+      background-color: $color-mint;
+      color: $color-black;
     }
   }
 
@@ -58,7 +68,7 @@
   }
 
   .service-card__text {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.68);
   }
 
   .vacancies-preview {
@@ -68,9 +78,9 @@
   .footer {
     background-color: #080808;
   }
-  
+
   .stats__label {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.68);
   }
 
   // Вакансии
@@ -85,12 +95,12 @@
   .vacancy-card__company,
   .vacancy-card__meta,
   .vacancy-card__desc {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.65);
   }
 
   .vacancy-card__footer {
     border-top-color: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.55);
   }
 
   // Фильтры
@@ -106,11 +116,11 @@
   }
 
   .filters__label {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.65);
   }
 
   .vacancies-list__count {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.65);
   }
 
   // Услуги
@@ -120,7 +130,7 @@
 
   .service-accordion__short,
   .service-accordion__body {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.68);
   }
 
   // Форма и наниматели
@@ -137,11 +147,16 @@
 
   .form__label,
   .steps p {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.65);
   }
 
   .form__input--error {
     background-color: #2c1a1a;
+  }
+
+  .form__success {
+    background: rgba(0, 201, 167, 0.16);
+    color: #F4FFFC;
   }
 
   // Мероприятия
@@ -165,7 +180,7 @@
     &__time,
     &__location,
     &__desc {
-      color: rgba(255, 255, 255, 0.65);
+      color: rgba(255, 255, 255, 0.68);
     }
   }
 
@@ -174,14 +189,15 @@
     h2 {
       color: #F4FFFC;
     }
+
     p,
     .contacts-form__desc {
-      color: rgba(255, 255, 255, 0.65);
+      color: rgba(255, 255, 255, 0.68);
     }
   }
 
   .schedule-list li {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.68);
     border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 
@@ -192,12 +208,15 @@
       rect {
         fill: #1A1F1E;
       }
+
       path[stroke="#fff"] {
         stroke: #2a2a2a;
       }
+
       rect[fill="#c8e6c9"] {
         fill: #2a2a2a;
       }
+
       text[fill="#777"] {
         fill: #888;
       }
@@ -210,12 +229,14 @@
 
     &__tooltip {
       background: #1A1F1E;
+
       &--visible {
         background: rgba(0, 201, 167, 0.15);
       }
     }
+
     &__tooltip-text {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.82);
     }
   }
 
@@ -223,9 +244,25 @@
     &__icon {
       background: #1A1F1E;
     }
+
     &__label {
       color: #FFFFFF;
     }
+  }
+
+  // Личный кабинет
+  .profile-item,
+  .empty-state {
+    background: #1A1F1E;
+  }
+
+  .profile-tabs {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .status--pending {
+    background: rgba(255, 193, 7, 0.18);
+    color: #ffd54f;
   }
 
   // Мобильное меню

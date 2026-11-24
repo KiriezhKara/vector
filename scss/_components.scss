@@ -27,8 +27,8 @@
 
   &--secondary {
     background-color: transparent;
-    border-color: $color-mint;
-    color: $color-mint;
+    border-color: $color-mint-dark;
+    color: $color-mint-dark;
 
     &:hover {
       background-color: $color-mint;
@@ -198,30 +198,11 @@
 
   &__subtitle {
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.78);
     margin-bottom: 32px;
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  &__visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__placeholder {
-    width: 280px;
-    height: 280px;
-    border: 2px dashed rgba(0, 201, 167, 0.4);
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-mint;
-    font-family: $font-heading;
-    font-size: 1.5rem;
   }
 
   &__visual {
@@ -237,7 +218,6 @@
     filter: drop-shadow(0 10px 20px rgba(0, 201, 167, 0.15));
   }
 
-  // Анимация прорисовки линии графика
   &__svg-line {
     stroke-dasharray: 500;
     stroke-dashoffset: 500;
@@ -250,7 +230,6 @@
     }
   }
 
-  // Пульсация главной точки
   &__svg-pulse {
     animation: pulseDot 2s infinite;
   }
@@ -278,12 +257,7 @@
     color: $color-black;
 
     &::placeholder {
-      color: #999;
-    }
-
-    &:focus {
-      outline: 3px solid $color-mint;
-      outline-offset: 2px;
+      color: #6c7a76;
     }
   }
 
@@ -307,7 +281,7 @@
     font-family: $font-heading;
     font-size: clamp(2rem, 1.5rem + 1.5vw, 2.75rem);
     font-weight: 700;
-    color: $color-mint;
+    color: $color-mint-dark;
     line-height: 1.2;
   }
 
@@ -371,11 +345,11 @@
     align-items: center;
     justify-content: center;
     transition: all $transition;
-    opacity: 0.6;
+    opacity: 0.7;
 
     &--visible {
       opacity: 1;
-      background: rgba(0, 201, 167, 0.1);
+      background: rgba(0, 201, 167, 0.12);
       border-left-color: $color-mint-dark;
     }
   }
@@ -434,6 +408,7 @@
       transform: scale(1.1);
       box-shadow: 0 6px 20px rgba(0, 201, 167, 0.4);
     }
+
     .career-step__label {
       color: $color-mint-dark;
     }
@@ -500,7 +475,7 @@
   }
 
   &__text {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.75);
     margin-bottom: 28px;
     font-size: 1.1rem;
   }
@@ -509,7 +484,7 @@
 // ===================== ПОДВАЛ =====================
 .footer {
   background-color: $color-black;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   padding-top: 60px;
 
   &__text {
@@ -523,7 +498,7 @@
     gap: 10px;
 
     a {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.75);
       font-size: 0.95rem;
 
       &:hover {
@@ -578,32 +553,6 @@
     gap: 6px;
   }
 
-  &__info {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-
-  &__fav-btn {
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-
-  &__actions {
-    margin-top: 12px;
-    display: flex;
-    gap: 10px;
-  }
-  
-  &__apply {
-    width: 100%;
-  }
-
   &__tag {
     font-size: 0.75rem;
     font-weight: 600;
@@ -651,7 +600,7 @@
     align-items: center;
     margin-top: 12px;
     padding-top: 12px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
     font-size: 0.8rem;
     color: $color-slate;
   }
@@ -664,6 +613,32 @@
     display: flex;
     align-items: center;
     gap: 4px;
+  }
+
+  &__info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__fav-btn {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__apply {
+    width: 100%;
   }
 }
 
@@ -679,7 +654,7 @@
   }
 
   &__subtitle {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 1.05rem;
   }
 }
@@ -717,16 +692,11 @@
   &__select {
     width: 100%;
     padding: 10px 14px;
-    border: 1px solid #ddd;
+    border: 1px solid #d5dedb;
     border-radius: $radius-sm;
     background: $color-cloud;
     color: $color-black;
     transition: border-color $transition;
-
-    &:focus {
-      outline: none;
-      border-color: $color-mint;
-    }
   }
 
   &__reset {
@@ -794,7 +764,7 @@
   }
 
   &[open] {
-    border: 1px solid rgba(0, 201, 167, 0.3);
+    border: 1px solid rgba(0, 201, 167, 0.35);
   }
 }
 
@@ -868,16 +838,11 @@
   &__textarea {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid #ddd;
+    border: 1px solid #d5dedb;
     border-radius: $radius-sm;
     background: $color-cloud;
     color: $color-black;
     transition: border-color $transition;
-
-    &:focus {
-      outline: none;
-      border-color: $color-mint;
-    }
   }
 
   &__textarea {
@@ -895,17 +860,28 @@
     font-size: 0.8rem;
     color: $color-slate;
   }
+
+  &__success {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: $radius-sm;
+    background: rgba(0, 201, 167, 0.14);
+    border-left: 4px solid $color-mint-dark;
+    color: $color-black;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
 }
 
 .form__error {
   display: block;
   margin-top: 5px;
   font-size: 0.8rem;
-  color: #e74c3c;
+  color: $color-danger;
 }
 
 .form__input--error {
-  border-color: #e74c3c !important;
+  border-color: $color-danger !important;
   background-color: #fdf2f2;
 }
 
@@ -1091,13 +1067,95 @@
   }
 }
 
+// ===================== ЛИЧНЫЙ КАБИНЕТ =====================
+.profile-page {
+  padding: 50px 0 80px;
+}
+
+.profile-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+}
+
+.profile-tab {
+  padding: 10px 20px;
+  font-weight: 600;
+  color: $color-slate;
+  border-radius: $radius-sm;
+  transition: all $transition;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 201, 167, 0.1);
+  }
+
+  &--active {
+    background: $color-mint;
+    color: $color-black;
+  }
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-item {
+  background: $color-white;
+  padding: 20px;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $color-slate;
+  }
+}
+
+.status {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+
+  &--pending {
+    background: rgba(255, 193, 7, 0.2);
+    color: #9a7400;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  background: $color-white;
+  border-radius: $radius;
+  color: $color-slate;
+  box-shadow: $shadow;
+}
+
 // ===================== АДАПТИВ ДЛЯ ЭЛЕМЕНТОВ =====================
 @media (max-width: 1023px) {
   .nav {
     display: none;
 
     &--open {
-      display: flex !important;
+      display: flex;
       position: absolute;
       top: 72px;
       left: 0;
@@ -1153,6 +1211,7 @@
     flex-direction: column;
     gap: 20px;
   }
+
   .career-path__svg {
     display: none;
   }
@@ -1187,123 +1246,5 @@
 
   .header__inner {
     height: 64px;
-  }
-}
-
-// ===================== ЛИЧНЫЙ КАБИНЕТ =====================
-.profile-page {
-  padding: 50px 0 80px;
-}
-
-.profile-tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 30px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 10px;
-}
-
-.profile-tab {
-  padding: 10px 20px;
-  font-weight: 600;
-  color: $color-slate;
-  border-radius: $radius-sm;
-  transition: all $transition;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background: rgba(0, 201, 167, 0.1);
-  }
-
-  &--active {
-    background: $color-mint;
-    color: $color-black;
-  }
-}
-
-.profile-content {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.profile-item {
-  background: $color-white;
-  padding: 20px;
-  border-radius: $radius;
-  box-shadow: $shadow;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  h3 {
-    font-size: 1.1rem;
-    margin-bottom: 4px;
-  }
-
-  p {
-    font-size: 0.9rem;
-    color: $color-slate;
-  }
-}
-
-.status {
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 4px 12px;
-  border-radius: 20px;
-
-  &--pending {
-    background: rgba(255, 193, 7, 0.2);
-    color: #d39e00;
-  }
-}
-
-.empty-state {
-  text-align: center;
-  padding: 40px;
-  background: $color-white;
-  border-radius: $radius;
-  color: $color-slate;
-  box-shadow: $shadow;
-}
-
-// ===================== НОВЫЕ КНОПКИ В КАРТОЧКЕ =====================
-.vacancy-card {
-  &__info {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-
-  &__fav-btn {
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-
-  &__actions {
-    margin-top: 12px;
-    display: flex;
-    gap: 10px;
-  }
-  
-  &__apply {
-    width: 100%;
-  }
-}
-
-[data-theme="dark"] {
-  .profile-item, .empty-state {
-    background: #1A1F1E;
-  }
-  .profile-tabs {
-    border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 }

@@ -25,7 +25,7 @@
         </span>
       </a>
 
-      <nav class="nav" id="nav">
+      <nav class="nav" id="nav" aria-label="Основная навигация">
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link">Главная</a></li>
           <li><a href="vacancies.html" class="nav__link">Вакансии</a></li>
@@ -38,9 +38,9 @@
       </nav>
 
       <div class="header__actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span>◐</span></button>
-        <button class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих"><span>Аа</span></button>
-        <button class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span aria-hidden="true">◐</span></button>
+        <button type="button" class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих"><span>Аа</span></button>
+        <button type="button" class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
@@ -56,13 +56,9 @@
     <section class="contacts-page">
       <div class="container">
         <div class="contacts-page__grid">
-
-          <!-- Левая колонка: Информация -->
           <div class="contacts-info">
-            
-            <!-- Индикатор работы -->
             <div class="work-status" id="workStatus">
-              <span class="work-status__dot"></span>
+              <span class="work-status__dot" aria-hidden="true"></span>
               <span class="work-status__text">Проверка графика...</span>
             </div>
 
@@ -75,13 +71,13 @@
             <div class="contact-block">
               <h2 class="section-title">Телефоны</h2>
               <p><a href="tel:+375171234567">+375 (17) 123-45-67</a> — приёмная</p>
-              <p><a href="tel:+375292211120">+375 (29) 22-11-12</a> — горячая линия</p>
+              <p><a href="tel:+375292211120">+375 (29) 22-11-120</a> — горячая линия</p>
             </div>
 
             <div class="contact-block">
               <h2 class="section-title">Электронная почта</h2>
               <p><a href="mailto:info@vektor.by">info@vektor.by</a> — общие вопросы</p>
-              <p><a href="mailto:hr@vektor.by">nan@vektor.by</a> — для нанимателей</p>
+              <p><a href="mailto:hr@vektor.by">hr@vektor.by</a> — для нанимателей</p>
             </div>
 
             <div class="contact-block">
@@ -93,11 +89,10 @@
             </div>
           </div>
 
-          <!-- Правая колонка: Форма -->
           <div class="contacts-form-wrap">
             <h2 class="section-title">Обратная связь</h2>
             <p class="contacts-form__desc">Оставьте сообщение, и мы ответим вам в течение рабочего дня.</p>
-            
+
             <form class="form" id="contactForm" novalidate>
               <div class="form__group">
                 <label class="form__label" for="userName">Ваше имя *</label>
@@ -131,48 +126,38 @@
           </div>
         </div>
 
-        <!-- Схема проезда (SVG) -->
         <div class="contacts-map">
           <h2 class="section-title">Схема расположения</h2>
           <div class="contacts-map__wrap">
-            <!-- Простая стилизованная SVG-карта -->
-            <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" aria-label="Схема расположения центра занятости">
+            <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Схема расположения центра занятости">
               <rect width="800" height="300" fill="#e8f5e9" rx="12"/>
-              
-              <!-- Дороги -->
+
               <path d="M0 150 H800" stroke="#fff" stroke-width="40"/>
               <path d="M200 0 V300" stroke="#fff" stroke-width="30"/>
               <path d="M600 0 V300" stroke="#fff" stroke-width="30"/>
-              
-              <!-- Разметка дорог -->
+
               <path d="M0 150 H800" stroke="#ccc" stroke-width="2" stroke-dasharray="10 10"/>
               <path d="M200 0 V300" stroke="#ccc" stroke-width="2" stroke-dasharray="10 10"/>
               <path d="M600 0 V300" stroke="#ccc" stroke-width="2" stroke-dasharray="10 10"/>
 
-              <!-- Здания (кварталы) -->
               <rect x="20" y="20" width="150" height="100" fill="#c8e6c9" rx="4"/>
               <rect x="230" y="20" width="340" height="100" fill="#c8e6c9" rx="4"/>
               <rect x="630" y="20" width="150" height="100" fill="#c8e6c9" rx="4"/>
-              
+
               <rect x="20" y="180" width="150" height="100" fill="#c8e6c9" rx="4"/>
               <rect x="230" y="180" width="340" height="100" fill="#c8e6c9" rx="4"/>
               <rect x="630" y="180" width="150" height="100" fill="#c8e6c9" rx="4"/>
 
-              <!-- Метка "Наш центр" -->
               <g transform="translate(400, 140)">
-                <!-- Пин -->
                 <path d="M0 -40 C-20 -40 -30 -20 0 10 C30 -20 20 -40 0 -40 Z" fill="#00C9A7"/>
                 <circle cx="0" cy="-25" r="8" fill="#fff"/>
-                <!-- Текст -->
-                <rect x="-100" y="20" width="200" height="30" fill="#0D0D0D" rx="6" opacity="0.85"/>
+                <rect x="-100" y="20" width="200" height="30" fill="#0D0D0D" rx="6" opacity="0.9"/>
                 <text x="0" y="40" font-family="Manrope, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">Центр занятости «Вектор»</text>
               </g>
 
-              font-family="Manrope, sans-serif" font-size="12" fill="#777" text-anchor="middle">ул. Примерная</text>
-              <text x="195" y="160" font-family="Manrope, sans-serif" font-size="12" fill="#777" transform="rotate(-90 195,160)">пр. Независимости</text>
-            </svg><!-- Улицы (подписи) -->
               <text x="400" y="135" font-family="Manrope, sans-serif" font-size="12" fill="#777" text-anchor="middle">ул. Петруся Бровки</text>
-              <text x="195" y="160" font-family="Manrope, sans-serif" font-size="12" fill="#777" transform="rotate(-90 195,160)">пр. Независимости</text> 
+              <text x="195" y="160" font-family="Manrope, sans-serif" font-size="12" fill="#777" transform="rotate(-90 195,160)">пр. Независимости</text>
+            </svg>
           </div>
         </div>
       </div>
@@ -194,7 +179,7 @@
       </div>
       <div class="footer__contacts">
         <p>г. Минск, ул. Петруся Бровки, 14</p>
-        <p>+375 (17) 987-65-43</p>
+        <p>+375 (17) 123-45-67</p>
         <p>info@vektor.by</p>
       </div>
     </div>
@@ -207,9 +192,6 @@
   <script src="../js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // ==========================================
-      // 1. ЛОГИКА ИНДИКАТОРА "ОТКРЫТО / ЗАКРЫТО"
-      // ==========================================
       const updateWorkStatus = () => {
         const statusBox = document.getElementById('workStatus');
         if (!statusBox) return;
@@ -218,21 +200,20 @@
         const text = statusBox.querySelector('.work-status__text');
 
         const now = new Date();
-        const day = now.getDay(); // 0 - Вс, 1 - Пн ... 6 - Сб
+        const day = now.getDay();
         const hours = now.getHours();
         const minutes = now.getMinutes();
         const timeInMinutes = hours * 60 + minutes;
 
-        // График: Пн-Пт 8:30 - 17:30, обед 13:00 - 14:00
-        const startWork = 8 * 60 + 30;  // 8:30
-        const endWork = 17 * 60 + 30;   // 17:30
-        const lunchStart = 13 * 60;     // 13:00
-        const lunchEnd = 14 * 60;       // 14:00
+        const startWork = 8 * 60 + 30;
+        const endWork = 17 * 60 + 30;
+        const lunchStart = 13 * 60;
+        const lunchEnd = 14 * 60;
 
         let isOpen = false;
         let message = '';
 
-        if (day >= 1 && day <= 5) { // Будни
+        if (day >= 1 && day <= 5) {
           if (timeInMinutes >= startWork && timeInMinutes < endWork) {
             if (timeInMinutes >= lunchStart && timeInMinutes < lunchEnd) {
               isOpen = false;
@@ -246,33 +227,43 @@
           } else {
             message = 'Закрыто. Откроется завтра в 8:30';
           }
-        } else { // Выходные
+        } else {
           message = 'Выходной день. Откроется в понедельник в 8:30';
         }
 
-        // Обновляем UI
         if (isOpen) {
-          dot.style.backgroundColor = '#00C9A7'; // Зеленый
+          dot.style.backgroundColor = '#00C9A7';
           dot.style.boxShadow = '0 0 8px #00C9A7';
-          statusBox.style.backgroundColor = 'rgba(0, 201, 167, 0.1)';
-          statusBox.style.borderColor = 'rgba(0, 201, 167, 0.3)';
+          statusBox.style.backgroundColor = 'rgba(0, 201, 167, 0.12)';
+          statusBox.style.borderColor = 'rgba(0, 201, 167, 0.35)';
         } else {
-          dot.style.backgroundColor = '#e74c3c'; // Красный
+          dot.style.backgroundColor = '#e74c3c';
           dot.style.boxShadow = '0 0 8px #e74c3c';
-          statusBox.style.backgroundColor = 'rgba(231, 76, 60, 0.1)';
-          statusBox.style.borderColor = 'rgba(231, 76, 60, 0.3)';
+          statusBox.style.backgroundColor = 'rgba(231, 76, 60, 0.12)';
+          statusBox.style.borderColor = 'rgba(231, 76, 60, 0.35)';
         }
         text.textContent = message;
       };
 
       updateWorkStatus();
-      setInterval(updateWorkStatus, 60000); // Обновляем каждую минуту
+      setInterval(updateWorkStatus, 60000);
 
-      // ==========================================
-      // 2. ВАЛИДАЦИЯ ФОРМЫ ОБРАТНОЙ СВЯЗИ
-      // ==========================================
       const form = document.getElementById('contactForm');
       if (!form) return;
+
+      const clearSuccess = () => {
+        const successEl = form.querySelector('.form__success');
+        if (successEl) successEl.remove();
+      };
+
+      const showSuccess = (message) => {
+        clearSuccess();
+        const successEl = document.createElement('div');
+        successEl.className = 'form__success';
+        successEl.setAttribute('role', 'status');
+        successEl.textContent = message;
+        form.appendChild(successEl);
+      };
 
       const showError = (field, message) => {
         field.classList.add('form__input--error');
@@ -312,9 +303,11 @@
         }
       };
 
-      // Навешиваем события
-      form.querySelectorAll('.form__input, .form__textarea').forEach(field => {
-        field.addEventListener('input', () => clearError(field));
+      form.querySelectorAll('.form__input, .form__textarea').forEach((field) => {
+        field.addEventListener('input', () => {
+          clearError(field);
+          clearSuccess();
+        });
         field.addEventListener('blur', () => {
           if (validators[field.name]) {
             const error = validators[field.name](field.value);
@@ -327,8 +320,9 @@
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         let isValid = true;
+        clearSuccess();
 
-        form.querySelectorAll('.form__input, .form__textarea').forEach(field => {
+        form.querySelectorAll('.form__input, .form__textarea').forEach((field) => {
           if (validators[field.name]) {
             const error = validators[field.name](field.value);
             if (error) {
@@ -341,10 +335,10 @@
         });
 
         if (isValid) {
-          alert('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
           form.reset();
-          form.querySelectorAll('.form__error').forEach(el => el.remove());
-          form.querySelectorAll('.form__input--error').forEach(el => el.classList.remove('form__input--error'));
+          form.querySelectorAll('.form__error').forEach((el) => el.remove());
+          form.querySelectorAll('.form__input--error').forEach((el) => el.classList.remove('form__input--error'));
+          showSuccess('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
         }
       });
     });

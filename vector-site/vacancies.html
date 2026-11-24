@@ -15,7 +15,6 @@
 </head>
 <body>
 
-  <!-- ШАПКА -->
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="index.html" class="logo">
@@ -26,7 +25,7 @@
         </span>
       </a>
 
-      <nav class="nav" id="nav">
+      <nav class="nav" id="nav" aria-label="Основная навигация">
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link">Главная</a></li>
           <li><a href="vacancies.html" class="nav__link nav__link--active">Вакансии</a></li>
@@ -39,13 +38,13 @@
       </nav>
 
       <div class="header__actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Тема">
-          <span>◐</span>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Тема">
+          <span aria-hidden="true">◐</span>
         </button>
-        <button class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих" title="Для слабовидящих">
+        <button type="button" class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих" title="Для слабовидящих">
           <span>Аа</span>
         </button>
-        <button class="burger" id="burger" aria-label="Открыть меню">
+        <button type="button" class="burger" id="burger" aria-label="Открыть меню">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -53,7 +52,6 @@
   </header>
 
   <main>
-    <!-- Заголовок страницы -->
     <section class="page-hero">
       <div class="container">
         <h1 class="page-hero__title">Вакансии</h1>
@@ -61,13 +59,10 @@
       </div>
     </section>
 
-    <!-- Фильтры + список -->
     <section class="vacancies-page">
       <div class="container">
         <div class="vacancies-page__layout">
-
-          <!-- Фильтры -->
-          <aside class="filters">
+          <aside class="filters" aria-label="Фильтры вакансий">
             <h2 class="filters__title">Фильтры</h2>
 
             <div class="filters__group">
@@ -88,6 +83,7 @@
                 <option value="Ленинский">Ленинский</option>
                 <option value="Октябрьский">Октябрьский</option>
                 <option value="Фрунзенский">Фрунзенский</option>
+                <option value="Минский район">Минский район</option>
               </select>
             </div>
 
@@ -97,6 +93,7 @@
                 <option value="">Любой</option>
                 <option value="Полная занятость">Полная занятость</option>
                 <option value="Частичная занятость">Частичная занятость</option>
+                <option value="Удаленная работа">Удаленная работа</option>
               </select>
             </div>
 
@@ -111,10 +108,9 @@
               </select>
             </div>
 
-            <button class="btn btn--secondary filters__reset" id="resetFilters">Сбросить</button>
+            <button type="button" class="btn btn--secondary filters__reset" id="resetFilters">Сбросить</button>
           </aside>
 
-          <!-- Список вакансий -->
           <div class="vacancies-list">
             <div class="vacancies-list__header">
               <p class="vacancies-list__count" id="vacanciesCount">Загрузка...</p>
@@ -123,13 +119,11 @@
               <p class="vacancies-preview__loading">Загрузка вакансий...</p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ПОДВАЛ -->
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
@@ -147,7 +141,7 @@
       </div>
       <div class="footer__contacts">
         <p>г. Минск, ул. Петруся Бровки, 14</p>
-        <p>+375 (29) 987-65-43</p>
+        <p>+375 (17) 123-45-67</p>
         <p>info@vektor.by</p>
       </div>
     </div>
