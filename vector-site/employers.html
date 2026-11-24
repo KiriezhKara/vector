@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Информация для нанимателей — центр занятости Вектор">
+  <title>Нанимателям — Вектор</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img src="../images/logo.svg" alt="Логотип центра занятости Вектор" width="40" height="40">
+        <span class="logo__text">
+          <span class="logo__name">ВЕКТОР</span>
+          <span class="logo__desc">Центр занятости</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Главная</a></li>
+          <li><a href="vacancies.html" class="nav__link">Вакансии</a></li>
+          <li><a href="services.html" class="nav__link">Услуги</a></li>
+          <li><a href="employers.html" class="nav__link nav__link--active">Нанимателям</a></li>
+          <li><a href="events.html" class="nav__link">Мероприятия</a></li>
+          <li><a href="contacts.html" class="nav__link">Контакты</a></li>
+          <li><a href="profile.html" class="nav__link">Профиль</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span>◐</span></button>
+        <button class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих"><span>Аа</span></button>
+        <button class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-hero__title">Нанимателям</h1>
+        <p class="page-hero__subtitle">Размещение вакансий и подбор персонала</p>
+      </div>
+    </section>
+
+    <section class="employers-page">
+      <div class="container">
+        <div class="employers-page__grid">
+
+          <!-- Инструкция -->
+          <div class="employers-info">
+            <h2 class="section-title">Как разместить вакансию</h2>
+            <ol class="steps">
+              <li class="steps__item">
+                <span class="steps__num">1</span>
+                <div>
+                  <h3>Заполните форму</h3>
+                  <p>Укажите должность, требования, условия работы и контактные данные.</p>
+                </div>
+              </li>
+              <li class="steps__item">
+                <span class="steps__num">2</span>
+                <div>
+                  <h3>Отправьте заявку</h3>
+                  <p>Мы проверим информацию и опубликуем вакансию в течение 1 рабочего дня.</p>
+                </div>
+              </li>
+              <li class="steps__item">
+                <span class="steps__num">3</span>
+                <div>
+                  <h3>Получайте отклики</h3>
+                  <p>Кандидаты будут связываться с вами напрямую по указанным контактам.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Форма -->
+          <div class="employers-form-wrap">
+            <h2 class="section-title">Форма подачи вакансии</h2>
+            <form class="form" id="vacancyForm" novalidate>
+              <div class="form__group">
+                <label class="form__label" for="jobTitle">Название должности *</label>
+                <input class="form__input" type="text" id="jobTitle" name="jobTitle" required placeholder="Например: Менеджер по продажам">
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="companyName">Название организации *</label>
+                <input class="form__input" type="text" id="companyName" name="companyName" required placeholder="ООО «Пример»">
+              </div>
+
+              <div class="form__row">
+                <div class="form__group">
+                  <label class="form__label" for="salary">Заработная плата (BYN)</label>
+                  <input class="form__input" type="text" id="salary" name="salary" placeholder="от 1500">
+                </div>
+                <div class="form__group">
+                  <label class="form__label" for="jobType">Тип занятости</label>
+                  <select class="form__input" id="jobType" name="jobType">
+                    <option value="Полная занятость">Полная занятость</option>
+                    <option value="Частичная занятость">Частичная занятость</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="jobDesc">Описание вакансии *</label>
+                <textarea class="form__textarea" id="jobDesc" name="jobDesc" rows="4" required placeholder="Обязанности, требования, условия..."></textarea>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="contactEmail">Контактный email *</label>
+                <input class="form__input" type="email" id="contactEmail" name="contactEmail" required placeholder="hr@company.by">
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="contactPhone">Телефон</label>
+                <input class="form__input" type="tel" id="contactPhone" name="contactPhone" placeholder="+375 (29) 000-00-00">
+              </div>
+
+              <button type="submit" class="btn btn--primary form__submit">Отправить вакансию</button>
+              <p class="form__note">* — обязательные поля</p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo logo--footer"><span class="logo__name">ВЕКТОР</span></a>
+        <p class="footer__text">Центр занятости населения</p>
+      </div>
+      <div class="footer__nav">
+        <a href="vacancies.html">Вакансии</a>
+        <a href="services.html">Услуги</a>
+        <a href="employers.html">Нанимателям</a>
+        <a href="events.html">Мероприятия</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="footer__contacts">
+        <p>г. Минск, ул. Петруся Бровки, 14</p>
+        <p>+375 (29) 987-65-43</p>
+        <p>info@vektor.by</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container"><p>© 2027 Центр занятости «Вектор»</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/main.js"></script>
+<script src="../js/theme.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/validation.js"></script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Личный кабинет — центр занятости Вектор">
+  <title>Личный кабинет — Вектор</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img src="../images/logo.svg" alt="Логотип центра занятости Вектор" width="40" height="40">
+        <span class="logo__text">
+          <span class="logo__name">ВЕКТОР</span>
+          <span class="logo__desc">Центр занятости</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Главная</a></li>
+          <li><a href="vacancies.html" class="nav__link">Вакансии</a></li>
+          <li><a href="services.html" class="nav__link">Услуги</a></li>
+          <li><a href="employers.html" class="nav__link">Нанимателям</a></li>
+          <li><a href="events.html" class="nav__link">Мероприятия</a></li>
+          <li><a href="contacts.html" class="nav__link">Контакты</a></li>
+          <li><a href="profile.html" class="nav__link nav__link--active">Профиль</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span>◐</span></button>
+        <button class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих"><span>Аа</span></button>
+        <button class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-hero__title">Личный кабинет</h1>
+        <p class="page-hero__subtitle">Ваши отклики и избранные вакансии</p>
+      </div>
+    </section>
+
+    <section class="profile-page">
+      <div class="container">
+        <div class="profile-tabs">
+          <button class="profile-tab profile-tab--active" data-tab="applications">Мои отклики</button>
+          <button class="profile-tab" data-tab="favorites">Избранное</button>
+        </div>
+
+        <div class="profile-content" id="profileContent">
+          <p class="empty-state">Загрузка...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo logo--footer"><span class="logo__name">ВЕКТОР</span></a>
+        <p class="footer__text">Центр занятости населения</p>
+      </div>
+      <div class="footer__nav">
+        <a href="vacancies.html">Вакансии</a>
+        <a href="services.html">Услуги</a>
+        <a href="employers.html">Нанимателям</a>
+        <a href="events.html">Мероприятия</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="footer__contacts">
+        <p>г. Минск, ул. Петруся Бровки, 14</p>
+        <p>+375 (29) 987-65-43</p>
+        <p>info@vektor.by</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container"><p>© 2027 Центр занятости «Вектор»</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const content = document.getElementById('profileContent');
+      const tabs = document.querySelectorAll('.profile-tab');
+
+      // Загрузка данных из localStorage
+      const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+      // Загружаем XML, чтобы взять оттуда названия вакансий
+      fetch('../data/vacancies.xml')
+        .then(res => res.text())
+        .then(str => {
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(str, 'application/xml');
+          const nodes = xml.querySelectorAll('vacancy');
+          
+          // Создаем объект для быстрого поиска: { "1": "Менеджер по продажам", "2": "Водитель" ... }
+          const vacanciesData = {};
+          nodes.forEach(v => {
+            const id = v.querySelector('id')?.textContent;
+            const title = v.querySelector('title')?.textContent;
+            const company = v.querySelector('company')?.textContent;
+            if (id) {
+              vacanciesData[id] = { title, company };
+            }
+          });
+
+          // Теперь, когда данные есть, запускаем отрисовку
+          initTabs(vacanciesData);
+        })
+        .catch(err => {
+          console.error('Ошибка загрузки XML:', err);
+          // Если XML не загрузился, выводим хотя бы ID
+          initTabs({}); 
+        });
+
+      function initTabs(vacanciesData) {
+        // Отрисовка откликов
+        const renderApplications = () => {
+          if (applications.length === 0) {
+            content.innerHTML = '<p class="empty-state">У вас пока нет откликов. Перейдите в раздел <a href="vacancies.html">Вакансии</a>, чтобы найти работу.</p>';
+            return;
+          }
+          content.innerHTML = applications.map(app => {
+            // Берем название из XML, если не нашли — выводим "Вакансия #ID"
+            const vacancyInfo = vacanciesData[app.id];
+            const displayTitle = vacancyInfo ? vacancyInfo.title : `Вакансия #${app.id}`;
+            const displayCompany = vacancyInfo ? vacancyInfo.company : '';
+
+            return `
+              <div class="profile-item">
+                <div>
+                  <h3>${displayTitle}</h3>
+                  ${displayCompany ? `<p style="color: #00A88A; font-weight: 500; margin-bottom: 4px;">${displayCompany}</p>` : ''}
+                  <p>Отправлено: ${new Date(app.date).toLocaleDateString('ru-RU')}</p>
+                </div>
+                <span class="status status--pending">На рассмотрении</span>
+              </div>
+            `;
+          }).join('');
+        };
+
+        // Отрисовка избранного
+        const renderFavorites = () => {
+          if (favorites.length === 0) {
+            content.innerHTML = '<p class="empty-state">В избранном пока пусто. Нажмите на 🤍 в карточке вакансии, чтобы сохранить её.</p>';
+            return;
+          }
+          content.innerHTML = favorites.map(id => {
+            const vacancyInfo = vacanciesData[id];
+            const displayTitle = vacancyInfo ? vacancyInfo.title : `Вакансия #${id}`;
+            const displayCompany = vacancyInfo ? vacancyInfo.company : '';
+
+            return `
+              <div class="profile-item">
+                <div>
+                  <h3>${displayTitle}</h3>
+                  ${displayCompany ? `<p style="color: #00A88A; font-weight: 500;">${displayCompany}</p>` : ''}
+                </div>
+                <a href="vacancies.html?id=${id}" class="btn btn--secondary">Перейти к вакансии</a>
+              </div>
+            `;
+          }).join('');
+        };
+
+        // Переключение вкладок
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('profile-tab--active'));
+            tab.classList.add('profile-tab--active');
+
+            if (tab.dataset.tab === 'applications') renderApplications();
+            else renderFavorites();
+          });
+        });
+
+        // Инициализация (показываем вкладку "Мои отклики" по умолчанию)
+        renderApplications();
+      }
+    });
+  </script>
+</body>
+</html>

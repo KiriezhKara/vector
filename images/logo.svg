@@ -1,0 +1,17 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Фон -->
+  <rect width="48" height="48" rx="12" fill="#0D0D0D"/>
+  
+  <!-- 1. ГРАФИК (Ступеньки) -->
+  <rect x="9" y="34" width="7" height="8" rx="1" fill="#00C9A7" opacity="0.4"/>
+  <rect x="20" y="28" width="7" height="14" rx="1" fill="#00C9A7" opacity="0.7"/>
+  <rect x="31" y="22" width="7" height="20" rx="1" fill="#00C9A7"/>
+  
+  <!-- 2. СТРЕЛКА -->
+  <!-- Начинается слева внизу, идет вверх, затем строго вправо -->
+  <path d="M 9 32 L 28 15 H 37" stroke="#00C9A7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- 3. НАКОНЕЧНИК -->
+  <!-- Классическая стрелка, идеально вписанная в линию -->
+  <path d="M 31 9 L 37 15 L 31 21" stroke="#00C9A7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

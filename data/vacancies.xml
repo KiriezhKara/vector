@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vacancies>
+  <vacancy>
+    <id>1</id>
+    <title>Менеджер по продажам</title>
+    <company>ООО «ТоргСервис»</company>
+    <district>Центральный</district>
+    <sphere>Продажи</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1500</salaryMin>
+    <salaryMax>2500</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>Полный день</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-20</date>
+    <views>142</views>
+    <description>Работа с клиентами, заключение договоров, выполнение плана продаж. Обучение за счет компании.</description>
+    <tags>Новая,Без опыта</tags>
+  </vacancy>
+  
+  <vacancy>
+    <id>2</id>
+    <title>Водитель категории B</title>
+    <company>ИП Иванов</company>
+    <district>Заводской</district>
+    <sphere>Транспорт</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1800</salaryMin>
+    <salaryMax>2200</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>График 5/2</schedule>
+    <address>Разъездной характер работы</address>
+    <date>2026-11-19</date>
+    <views>89</views>
+    <description>Доставка товаров по городу на служебном автомобиле. Аккуратность, знание города.</description>
+    <tags>Срочно</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>3</id>
+    <title>Продавец-консультант</title>
+    <company>Магазин «ТехноМир»</company>
+    <district>Первомайский</district>
+    <sphere>Розничная торговля</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>1200</salaryMin>
+    <salaryMax>1800</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 2/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-18</date>
+    <views>215</views>
+    <description>Консультирование покупателей, работа с кассой, выкладка товара. Приятный коллектив.</description>
+    <tags>Для студентов,Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>4</id>
+    <title>Бухгалтер</title>
+    <company>ЗАО «БелФин»</company>
+    <district>Советский</district>
+    <sphere>Финансы</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>2000</salaryMin>
+    <salaryMax>2800</salaryMax>
+    <experience>От 3 лет</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-17</date>
+    <views>67</views>
+    <description>Ведение бухгалтерского учёта, сдача отчётности, работа в 1С. Знание законодательства РБ.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>5</id>
+    <title>Повар</title>
+    <company>Кафе «Вкус»</company>
+    <district>Московский</district>
+    <sphere>Общепит</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1400</salaryMin>
+    <salaryMax>1900</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>График 2/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-16</date>
+    <views>112</views>
+    <description>Приготовление блюд, соблюдение санитарных норм, работа в смене. Медкнижка обязательна.</description>
+    <tags>Срочно</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>6</id>
+    <title>Программист Python</title>
+    <company>ООО «АйТиРешения»</company>
+    <district>Центральный</district>
+    <sphere>IT</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>3000</salaryMin>
+    <salaryMax>5000</salaryMax>
+    <experience>От 2 лет</experience>
+    <schedule>Удаленная работа</schedule>
+    <address>Работа на месте работодателя или удаленно</address>
+    <date>2026-11-15</date>
+    <views>340</views>
+    <description>Разработка backend-сервисов, работа с API, участие в code review. Знание Django/FastAPI.</description>
+    <tags>Новая,IT</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>7</id>
+    <title>Учитель английского языка</title>
+    <company>Гимназия №5</company>
+    <district>Фрунзенский</district>
+    <sphere>Образование</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1300</salaryMin>
+    <salaryMax>1700</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-14</date>
+    <views>78</views>
+    <description>Преподавание английского языка в средних классах. Высшее педагогическое образование.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>8</id>
+    <title>Медицинская сестра</title>
+    <company>Городская поликлиника №3</company>
+    <district>Октябрьский</district>
+    <sphere>Медицина</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1500</salaryMin>
+    <salaryMax>1900</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-13</date>
+    <views>156</views>
+    <description>Выполнение назначений врача, уход за пациентами, ведение документации. Среднее мед. образование.</description>
+    <tags>Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>9</id>
+    <title>Логист</title>
+    <company>ООО «ТрансЛайн»</company>
+    <district>Заводской</district>
+    <sphere>Логистика</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1800</salaryMin>
+    <salaryMax>2600</salaryMax>
+    <experience>От 2 лет</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-12</date>
+    <views>94</views>
+    <description>Организация перевозок, работа с перевозчиками, контроль сроков доставки, оформление документов.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>10</id>
+    <title>Сварщик</title>
+    <company>ОАО «СтройМонтаж»</company>
+    <district>Партизанский</district>
+    <sphere>Строительство</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>2200</salaryMin>
+    <salaryMax>3200</salaryMax>
+    <experience>От 3 лет</experience>
+    <schedule>График 6/1</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-11</date>
+    <views>201</views>
+    <description>Сварочные работы на строительных объектах. Наличие квалификационного удостоверения.</description>
+    <tags>Срочно,Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>11</id>
+    <title>Дизайнер интерьеров</title>
+    <company>Студия «Уют»</company>
+    <district>Ленинский</district>
+    <sphere>Дизайн</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>1500</salaryMin>
+    <salaryMax>3000</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>Удаленная работа</schedule>
+    <address>Удаленно</address>
+    <date>2026-11-10</date>
+    <views>310</views>
+    <description>Разработка дизайн-проектов жилых помещений, работа с клиентами. Знание AutoCAD/3ds Max.</description>
+    <tags>Фриланс,Удаленка</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>12</id>
+    <title>Официант</title>
+    <company>Ресторан «Италия»</company>
+    <district>Центральный</district>
+    <sphere>Общепит</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>1000</salaryMin>
+    <salaryMax>1500</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>Гибкий график</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-09</date>
+    <views>178</views>
+    <description>Обслуживание гостей, прием заказов, поддержание чистоты в зале. Чаевые.</description>
+    <tags>Для студентов,Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>13</id>
+    <title>Системный администратор</title>
+    <company>ООО «СофтСервис»</company>
+    <district>Советский</district>
+    <sphere>IT</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>2500</salaryMin>
+    <salaryMax>3500</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-08</date>
+    <views>85</views>
+    <description>Настройка и обслуживание серверов, поддержка пользователей, работа с сетью.</description>
+    <tags>IT</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>14</id>
+    <title>Курьер</title>
+    <company>Сервис доставки «Быстро»</company>
+    <district>Московский</district>
+    <sphere>Логистика</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>800</salaryMin>
+    <salaryMax>1200</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>Гибкий график</schedule>
+    <address>Разъездной характер работы</address>
+    <date>2026-11-07</date>
+    <views>420</views>
+    <description>Доставка заказов по городу. Наличие своего автомобиля или велосипеда приветствуется.</description>
+    <tags>Для студентов,Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>15</id>
+    <title>HR-менеджер</title>
+    <company>ООО «Кадры+»</company>
+    <district>Центральный</district>
+    <sphere>Управление персоналом</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1800</salaryMin>
+    <salaryMax>2500</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-06</date>
+    <views>130</views>
+    <description>Подбор персонала, проведение собеседований, адаптация новых сотрудников, ведение кадрового делопроизводства.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>16</id>
+    <title>Электрик</title>
+    <company>ОАО «ЭнергоСеть»</company>
+    <district>Заводской</district>
+    <sphere>Энергетика</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>2000</salaryMin>
+    <salaryMax>2800</salaryMax>
+    <experience>От 2 лет</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-05</date>
+    <views>76</views>
+    <description>Монтаж и ремонт электрооборудования, обслуживание сетей. Допуск по электробезопасности.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>17</id>
+    <title>Маркетолог</title>
+    <company>Агентство «Реклама-Про»</company>
+    <district>Первомайский</district>
+    <sphere>Маркетинг</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>1500</salaryMin>
+    <salaryMax>2200</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>Удаленная работа</schedule>
+    <address>Удаленно</address>
+    <date>2026-11-04</date>
+    <views>245</views>
+    <description>Разработка маркетинговых стратегий, ведение соцсетей, анализ эффективности рекламы.</description>
+    <tags>Удаленка</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>18</id>
+    <title>Кладовщик</title>
+    <company>Склад «ЛогистикПлюс»</company>
+    <district>Октябрьский</district>
+    <sphere>Логистика</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1300</salaryMin>
+    <salaryMax>1600</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 2/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-03</date>
+    <views>110</views>
+    <description>Прием, хранение и отпуск товара, ведение учета, работа с документами.</description>
+    <tags>Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>19</id>
+    <title>Воспитатель детского сада</title>
+    <company>Детский сад №12</company>
+    <district>Ленинский</district>
+    <sphere>Образование</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1200</salaryMin>
+    <salaryMax>1500</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-02</date>
+    <views>98</views>
+    <description>Воспитание и обучение детей дошкольного возраста, проведение занятий, прогулки.</description>
+    <tags>Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>20</id>
+    <title>Аналитик данных</title>
+    <company>ООО «ДатаЛаб»</company>
+    <district>Центральный</district>
+    <sphere>IT</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>3500</salaryMin>
+    <salaryMax>6000</salaryMax>
+    <experience>От 2 лет</experience>
+    <schedule>Удаленная работа</schedule>
+    <address>Удаленно</address>
+    <date>2026-11-01</date>
+    <views>512</views>
+    <description>Сбор, обработка и анализ данных, построение отчетов и дашбордов. SQL, Python, Excel.</description>
+    <tags>IT,Удаленка</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>21</id>
+    <title>Слесарь-сантехник</title>
+    <company>ЖЭУ №7</company>
+    <district>Партизанский</district>
+    <sphere>ЖКХ</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1600</salaryMin>
+    <salaryMax>2100</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>График 5/2</schedule>
+    <address>Разъездной характер работы</address>
+    <date>2026-10-31</date>
+    <views>64</views>
+    <description>Ремонт и обслуживание сантехнического оборудования в жилых домах, устранение аварий.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>22</id>
+    <title>Контент-менеджер</title>
+    <company>Онлайн-журнал «Стиль»</company>
+    <district>Советский</district>
+    <sphere>Медиа</sphere>
+    <type>Удаленная работа</type>
+    <salaryMin>1000</salaryMin>
+    <salaryMax>1500</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>Гибкий график</schedule>
+    <address>Удаленно</address>
+    <date>2026-10-30</date>
+    <views>280</views>
+    <description>Наполнение сайта контентом, написание статей, работа с текстовым редактором.</description>
+    <tags>Удаленка,Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>23</id>
+    <title>Кассир-операционист</title>
+    <company>Банк «Прогресс»</company>
+    <district>Московский</district>
+    <sphere>Финансы</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1400</salaryMin>
+    <salaryMax>1800</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-29</date>
+    <views>190</views>
+    <description>Обслуживание физических лиц, работа с наличными, оформление документов.</description>
+    <tags>Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>24</id>
+    <title>Тестировщик ПО (QA)</title>
+    <company>ООО «ГеймДев»</company>
+    <district>Центральный</district>
+    <sphere>IT</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>2000</salaryMin>
+    <salaryMax>3500</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-28</date>
+    <views>405</views>
+    <description>Ручное тестирование мобильных игр, составление баг-репортов. Обучение внутри компании.</description>
+    <tags>IT,Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>25</id>
+    <title>Швея</title>
+    <company>Ателье «Силуэт»</company>
+    <district>Октябрьский</district>
+    <sphere>Легкая промышленность</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>900</salaryMin>
+    <salaryMax>1400</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>Гибкий график</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-27</date>
+    <views>87</views>
+    <description>Пошив и ремонт одежды по индивидуальным заказам. Работа на промышленном оборудовании.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>26</id>
+    <title>Инженер-проектировщик</title>
+    <company>ОАО «БелПроект»</company>
+    <district>Фрунзенский</district>
+    <sphere>Строительство</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>2500</salaryMin>
+    <salaryMax>4000</salaryMax>
+    <experience>От 3 лет</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-26</date>
+    <views>55</views>
+    <description>Разработка проектной документации, работа в AutoCAD, авторский надзор.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>27</id>
+    <title>Оператор call-центра</title>
+    <company>ООО «Контакт»</company>
+    <district>Заводской</district>
+    <sphere>Телекоммуникации</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>1000</salaryMin>
+    <salaryMax>1400</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>Гибкий график</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-25</date>
+    <views>330</views>
+    <description>Прием входящих звонков, консультирование клиентов, решение базовых вопросов.</description>
+    <tags>Для студентов,Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>28</id>
+    <title>Фармацевт</title>
+    <company>Аптека «Здоровье»</company>
+    <district>Первомайский</district>
+    <sphere>Медицина</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1600</salaryMin>
+    <salaryMax>2200</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>График 2/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-24</date>
+    <views>120</views>
+    <description>Консультирование покупателей по лекарственным средствам, работа с кассой, учет товара.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>29</id>
+    <title>Специалист по рекламе</title>
+    <company>ООО «МедиаГрупп»</company>
+    <district>Ленинский</district>
+    <sphere>Маркетинг</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1700</salaryMin>
+    <salaryMax>2500</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-23</date>
+    <views>105</views>
+    <description>Планирование и запуск рекламных кампаний, работа с подрядчиками, отчетность.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>30</id>
+    <title>Помощник юриста</title>
+    <company>Юридическая фирма «Право»</company>
+    <district>Центральный</district>
+    <sphere>Юриспруденция</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>1000</salaryMin>
+    <salaryMax>1500</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>Гибкий график</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-22</date>
+    <views>260</views>
+    <description>Подготовка документов, работа с архивами, помощь в составлении договоров.</description>
+    <tags>Без опыта,Для студентов</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>31</id>
+    <title>Маляр-штукатур</title>
+    <company>Строительная бригада «Мастер»</company>
+    <district>Партизанский</district>
+    <sphere>Строительство</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1800</salaryMin>
+    <salaryMax>2800</salaryMax>
+    <experience>От 2 лет</experience>
+    <schedule>График 6/1</schedule>
+    <address>Разъездной характер работы</address>
+    <date>2026-10-21</date>
+    <views>93</views>
+    <description>Отделочные работы внутри помещений, подготовка поверхностей, покраска.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>32</id>
+    <title>Frontend-разработчик</title>
+    <company>ООО «ВебСтудия»</company>
+    <district>Центральный</district>
+    <sphere>IT</sphere>
+    <type>Удаленная работа</type>
+    <salaryMin>2800</salaryMin>
+    <salaryMax>4500</salaryMax>
+    <experience>От 2 лет</experience>
+    <schedule>Удаленная работа</schedule>
+    <address>Удаленно</address>
+    <date>2026-10-20</date>
+    <views>470</views>
+    <description>Разработка интерфейсов на React/Vue, работа с дизайнерами, оптимизация кода.</description>
+    <tags>IT,Удаленка</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>33</id>
+    <title>Администратор салона красоты</title>
+    <company>Салон «Шарм»</company>
+    <district>Советский</district>
+    <sphere>Услуги</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1300</salaryMin>
+    <salaryMax>1800</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 2/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-19</date>
+    <views>155</views>
+    <description>Встреча клиентов, запись на услуги, работа с кассой, поддержание уюта в салоне.</description>
+    <tags>Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>34</id>
+    <title>Грузчик</title>
+    <company>Торговый центр «Глобо»</company>
+    <district>Октябрьский</district>
+    <sphere>Логистика</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>800</salaryMin>
+    <salaryMax>1100</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>Гибкий график</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-18</date>
+    <views>210</views>
+    <description>Разгрузка и перемещение товара, помощь в складских операциях.</description>
+    <tags>Без опыта,Для студентов</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>35</id>
+    <title>Тренер по фитнесу</title>
+    <company>Фитнес-клуб «Энергия»</company>
+    <district>Московский</district>
+    <sphere>Спорт</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>1500</salaryMin>
+    <salaryMax>3000</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>Гибкий график</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-17</date>
+    <views>180</views>
+    <description>Проведение индивидуальных и групповых тренировок, составление программ.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>36</id>
+    <title>Переводчик (английский)</title>
+    <company>Бюро переводов «Лингво»</company>
+    <district>Центральный</district>
+    <sphere>Лингвистика</sphere>
+    <type>Удаленная работа</type>
+    <salaryMin>1200</salaryMin>
+    <salaryMax>2500</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>Удаленная работа</schedule>
+    <address>Удаленно</address>
+    <date>2026-10-16</date>
+    <views>220</views>
+    <description>Письменный перевод технических и юридических текстов, работа с CAT-инструментами.</description>
+    <tags>Удаленка,Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>37</id>
+    <title>Специалист по охране труда</title>
+    <company>ОАО «ПромСтрой»</company>
+    <district>Заводской</district>
+    <sphere>Безопасность</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1900</salaryMin>
+    <salaryMax>2600</salaryMax>
+    <experience>От 2 лет</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-15</date>
+    <views>45</views>
+    <description>Проведение инструктажей, контроль соблюдения норм охраны труда, ведение документации.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>38</id>
+    <title>Бариста</title>
+    <company>Кофейня «Арабика»</company>
+    <district>Первомайский</district>
+    <sphere>Общепит</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>1000</salaryMin>
+    <salaryMax>1400</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>Гибкий график</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-14</date>
+    <views>310</views>
+    <description>Приготовление кофейных напитков, работа с кассой, общение с гостями. Обучение.</description>
+    <tags>Без опыта,Для студентов</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>39</id>
+    <title>Специалист по закупкам</title>
+    <company>ООО «РитейлГрупп»</company>
+    <district>Ленинский</district>
+    <sphere>Закупки</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1700</salaryMin>
+    <salaryMax>2400</salaryMax>
+    <experience>От 2 лет</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-13</date>
+    <views>68</views>
+    <description>Поиск поставщиков, согласование условий, контроль поставок, ведение договоров.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>40</id>
+    <title>Фотограф</title>
+    <company>Фотостудия «Кадр»</company>
+    <district>Центральный</district>
+    <sphere>Искусство</sphere>
+    <type>Частичная занятость</type>
+    <salaryMin>1200</salaryMin>
+    <salaryMax>2500</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>Гибкий график</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-12</date>
+    <views>195</views>
+    <description>Проведение фотосессий, обработка фотографий, работа с клиентами.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>41</id>
+    <title>Специалист техподдержки</title>
+    <company>ООО «ХелпДеск»</company>
+    <district>Московский</district>
+    <sphere>IT</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1600</salaryMin>
+    <salaryMax>2200</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 2/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-11</date>
+    <views>340</views>
+    <description>Консультирование пользователей по техническим вопросам, решение базовых проблем с ПО.</description>
+    <tags>IT,Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>42</id>
+    <title>Пекарь</title>
+    <company>Пекарня «Хлебное место»</company>
+    <district>Октябрьский</district>
+    <sphere>Общепит</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1400</salaryMin>
+    <salaryMax>1800</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-10</date>
+    <views>102</views>
+    <description>Выпечка хлебобулочных изделий, соблюдение рецептуры и санитарных норм.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>43</id>
+    <title>Менеджер по туризму</title>
+    <company>Турфирма «Полет»</company>
+    <district>Советский</district>
+    <sphere>Туризм</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1500</salaryMin>
+    <salaryMax>3000</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-09</date>
+    <views>165</views>
+    <description>Подбор туров, бронирование, консультирование клиентов, работа с документами.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>44</id>
+    <title>Кровельщик</title>
+    <company>ООО «КровляСервис»</company>
+    <district>Фрунзенский</district>
+    <sphere>Строительство</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>2200</salaryMin>
+    <salaryMax>3500</salaryMax>
+    <experience>От 2 лет</experience>
+    <schedule>График 6/1</schedule>
+    <address>Разъездной характер работы</address>
+    <date>2026-10-08</date>
+    <views>58</views>
+    <description>Монтаж и ремонт кровли, работа на высоте. Наличие допуска.</description>
+    <tags>Срочно,Опыт</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>45</id>
+    <title>Секретарь-референт</title>
+    <company>ООО «Бизнес-Центр»</company>
+    <district>Центральный</district>
+    <sphere>Административная работа</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1200</salaryMin>
+    <salaryMax>1600</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-07</date>
+    <views>230</views>
+    <description>Работа с документами, прием звонков, помощь руководителю, организация встреч.</description>
+    <tags>Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>46</id>
+    <title>Монтажник окон</title>
+    <company>ООО «ОкнаПро»</company>
+    <district>Партизанский</district>
+    <sphere>Строительство</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1800</salaryMin>
+    <salaryMax>2800</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 5/2</schedule>
+    <address>Разъездной характер работы</address>
+    <date>2026-10-06</date>
+    <views>88</views>
+    <description>Установка пластиковых окон и дверей. Обучение на производстве.</description>
+    <tags>Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>47</id>
+    <title>Веб-дизайнер</title>
+    <company>Студия «Креатив»</company>
+    <district>Ленинский</district>
+    <sphere>Дизайн</sphere>
+    <type>Удаленная работа</type>
+    <salaryMin>2000</salaryMin>
+    <salaryMax>3500</salaryMax>
+    <experience>От 1 года</experience>
+    <schedule>Удаленная работа</schedule>
+    <address>Удаленно</address>
+    <date>2026-10-05</date>
+    <views>390</views>
+    <description>Разработка дизайна сайтов, создание макетов, работа с Figma/Adobe XD.</description>
+    <tags>Удаленка,Дизайн</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>48</id>
+    <title>Кладовщик-комплектовщик</title>
+    <company>ООО «АвтоМир»</company>
+    <district>Минский район</district>
+    <sphere>Логистика</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>2646</salaryMin>
+    <salaryMax>4500</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 2/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-11-22</date>
+    <views>13</views>
+    <description>Приемка, сортировка и комплектация автозапчастей. Работа на складе.</description>
+    <tags>Новая,Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>49</id>
+    <title>Специалист по кадрам</title>
+    <company>ОАО «БелПром»</company>
+    <district>Заводской</district>
+    <sphere>Управление персоналом</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1400</salaryMin>
+    <salaryMax>1900</salaryMax>
+    <experience>Без опыта</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-03</date>
+    <views>115</views>
+    <description>Ведение кадрового делопроизводства, оформление сотрудников, работа с военкоматами.</description>
+    <tags>Без опыта</tags>
+  </vacancy>
+
+  <vacancy>
+    <id>50</id>
+    <title>Столяр</title>
+    <company>Мебельная фабрика «Комфорт»</company>
+    <district>Советский</district>
+    <sphere>Деревообработка</sphere>
+    <type>Полная занятость</type>
+    <salaryMin>1800</salaryMin>
+    <salaryMax>2500</salaryMax>
+    <experience>От 2 лет</experience>
+    <schedule>График 5/2</schedule>
+    <address>Работа на месте работодателя</address>
+    <date>2026-10-02</date>
+    <views>72</views>
+    <description>Изготовление мебели по чертежам, работа на деревообрабатывающих станках.</description>
+    <tags>Опыт</tags>
+  </vacancy>
+</vacancies>

@@ -1,0 +1,30 @@
+// ===================== ЦВЕТА =====================
+$color-black: #0D0D0D;
+$color-mint: #00C9A7;
+$color-mint-dark: #00A88A;
+$color-cloud: #F4FFFC;
+$color-slate: #3D4F4A;
+$color-white: #FFFFFF;
+$color-gray-light: #E8F5F1;
+
+// Тёмная тема
+$color-dark-bg: #0D0D0D;
+$color-dark-card: #1A1F1E;
+$color-dark-text: #F4FFFC;
+
+// ===================== ТИПОГРАФИКА =====================
+$font-heading: 'Unbounded', system-ui, sans-serif;
+$font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+
+// ===================== РАЗМЕРЫ =====================
+$container-max: 1200px;
+$radius: 12px;
+$radius-sm: 8px;
+$shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+$transition: 0.25s ease;
+
+// ===================== БРЕЙКПОИНТЫ =====================
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1440px;
