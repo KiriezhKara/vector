@@ -25,7 +25,7 @@
         </span>
       </a>
 
-      <nav class="nav" id="nav" aria-label="Основная навигация">
+      <nav class="nav" id="nav">
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link">Главная</a></li>
           <li><a href="vacancies.html" class="nav__link">Вакансии</a></li>
@@ -33,14 +33,14 @@
           <li><a href="employers.html" class="nav__link">Нанимателям</a></li>
           <li><a href="events.html" class="nav__link">Мероприятия</a></li>
           <li><a href="contacts.html" class="nav__link">Контакты</a></li>
-          <li><a href="profile.html" class="nav__link nav__link--active">Профиль</a></li>
+          <li><a href="profile.html" class="nav__link nav__link--active">Кабинет</a></li>
         </ul>
       </nav>
 
       <div class="header__actions">
-        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span aria-hidden="true">◐</span></button>
-        <button type="button" class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих"><span>Аа</span></button>
-        <button type="button" class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему"><span>◐</span></button>
+        <button class="a11y-toggle" id="a11yToggle" aria-label="Режим для слабовидящих"><span>Аа</span></button>
+        <button class="burger" id="burger" aria-label="Открыть меню"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
@@ -55,14 +55,37 @@
 
     <section class="profile-page">
       <div class="container">
-        <div class="profile-tabs" role="tablist" aria-label="Разделы личного кабинета">
-          <button type="button" class="profile-tab profile-tab--active" data-tab="applications">Мои отклики</button>
-          <button type="button" class="profile-tab" data-tab="favorites">Избранное</button>
+        
+        <!-- БЛОК ВХОДА (Показывается, если не авторизован) -->
+        <div id="loginSection" class="login-section" style="display: none; max-width: 500px; margin: 0 auto;">
+          <h2 class="section-title" style="margin-bottom: 10px;">Вход в личный кабинет</h2>
+          <p style="color: #3D4F4A; margin-bottom: 20px;">Введите ваше имя, чтобы сохранять отклики и избранные вакансии.</p>
+          <form id="loginForm" class="form">
+            <div class="form__group">
+              <label class="form__label" for="userNameInput">Ваше имя *</label>
+              <input type="text" id="userNameInput" class="form__input" required placeholder="Иван Иванов">
+            </div>
+            <button type="submit" class="btn btn--primary form__submit">Войти</button>
+          </form>
         </div>
 
-        <div class="profile-content" id="profileContent">
-          <p class="empty-state">Загрузка...</p>
+        <!-- БЛОК ПРОФИЛЯ (Показывается, если авторизован) -->
+        <div id="profileContent" style="display: none;">
+          <div class="profile-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+            <h2 class="section-title" id="welcomeText">Личный кабинет</h2>
+            <button id="logoutBtn" class="btn btn--secondary" style="padding: 8px 16px; font-size: 0.9rem;">Выйти</button>
+          </div>
+          
+          <div class="profile-tabs">
+            <button class="profile-tab profile-tab--active" data-tab="applications">Мои отклики</button>
+            <button class="profile-tab" data-tab="favorites">Избранное</button>
+          </div>
+
+          <div class="profile-content" id="tabContent">
+            <!-- Сюда скрипт будет вставлять карточки -->
+          </div>
         </div>
+
       </div>
     </section>
   </main>
@@ -87,7 +110,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <div class="container"><p>© 2027 Центр занятости «Вектор»</p></div>
+      <div class="container"><p>© 2027 Центр занятости «Вектор». Учебный проект.</p></div>
     </div>
   </footer>
 
@@ -95,100 +118,122 @@
   <script src="../js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const content = document.getElementById('profileContent');
+      const loginSection = document.getElementById('loginSection');
+      const profileContent = document.getElementById('profileContent');
+      const loginForm = document.getElementById('loginForm');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const welcomeText = document.getElementById('welcomeText');
+      const tabContent = document.getElementById('tabContent');
       const tabs = document.querySelectorAll('.profile-tab');
 
-      const applications = JSON.parse(localStorage.getItem('applications') || '[]');
-      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      // Проверка состояния авторизации
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      const userName = localStorage.getItem('userName') || 'Пользователь';
 
-      fetch('../data/vacancies.xml')
-        .then((res) => {
-          if (!res.ok) throw new Error('Ошибка загрузки vacancies.xml');
-          return res.text();
-        })
-        .then((str) => {
-          const parser = new DOMParser();
-          const xml = parser.parseFromString(str, 'application/xml');
-          const nodes = xml.querySelectorAll('vacancy');
+      if (isLoggedIn) {
+        loginSection.style.display = 'none';
+        profileContent.style.display = 'block';
+        welcomeText.textContent = `Здравствуйте, ${userName}`;
+        loadProfileData();
+      } else {
+        loginSection.style.display = 'block';
+        profileContent.style.display = 'none';
+      }
 
-          const vacanciesData = {};
-          nodes.forEach((v) => {
-            const id = v.querySelector('id')?.textContent;
-            const title = v.querySelector('title')?.textContent;
-            const company = v.querySelector('company')?.textContent;
-            if (id) {
-              vacanciesData[id] = { title, company };
-            }
-          });
+      // Обработка входа
+      loginForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('userNameInput').value.trim();
+        if (name) {
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('userName', name);
+          window.location.reload();
+        }
+      });
 
-          initTabs(vacanciesData);
-        })
-        .catch((err) => {
-          console.error('Ошибка загрузки XML:', err);
-          initTabs({});
-        });
+      // Обработка выхода
+      logoutBtn?.addEventListener('click', () => {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userName');
+        // Опционально: очищать отклики и избранное при выходе (если хотите)
+        // localStorage.removeItem('applications');
+        // localStorage.removeItem('favorites');
+        window.location.reload();
+      });
 
-      function initTabs(vacanciesData) {
-        const renderApplications = () => {
-          if (applications.length === 0) {
-            content.innerHTML = '<p class="empty-state">У вас пока нет откликов. Перейдите в раздел <a href="vacancies.html">Вакансии</a>, чтобы найти работу.</p>';
-            return;
-          }
-          content.innerHTML = applications
-            .map((app) => {
-              const vacancyInfo = vacanciesData[app.id];
-              const displayTitle = vacancyInfo ? vacancyInfo.title : `Вакансия #${app.id}`;
-              const displayCompany = vacancyInfo ? vacancyInfo.company : '';
+      // Загрузка данных для профиля
+      function loadProfileData() {
+        const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
-              return `
-                <div class="profile-item">
-                  <div>
-                    <h3>${displayTitle}</h3>
-                    ${displayCompany ? `<p style="color: #00A88A; font-weight: 500; margin-bottom: 4px;">${displayCompany}</p>` : ''}
-                    <p>Отправлено: ${new Date(app.date).toLocaleDateString('ru-RU')}</p>
+        fetch('../data/vacancies.xml')
+          .then(res => res.text())
+          .then(str => {
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(str, 'application/xml');
+            const nodes = xml.querySelectorAll('vacancy');
+            const vacanciesData = {};
+            nodes.forEach(v => {
+              const id = v.querySelector('id')?.textContent;
+              if (id) vacanciesData[id] = {
+                title: v.querySelector('title')?.textContent || '',
+                company: v.querySelector('company')?.textContent || ''
+              };
+            });
+
+            const renderApplications = () => {
+              if (applications.length === 0) {
+                tabContent.innerHTML = '<p class="empty-state">У вас пока нет откликов. Перейдите в раздел <a href="vacancies.html">Вакансии</a>, чтобы найти работу.</p>';
+                return;
+              }
+              tabContent.innerHTML = applications.map(app => {
+                const info = vacanciesData[app.id];
+                return `
+                  <div class="profile-item">
+                    <div>
+                      <h3>${info ? info.title : 'Вакансия #' + app.id}</h3>
+                      ${info ? `<p style="color: #00A88A; font-weight: 500; margin-bottom: 4px;">${info.company}</p>` : ''}
+                      <p>Отправлено: ${new Date(app.date).toLocaleDateString('ru-RU')}</p>
+                    </div>
+                    <span class="status status--pending">На рассмотрении</span>
                   </div>
-                  <span class="status status--pending">На рассмотрении</span>
-                </div>
-              `;
-            })
-            .join('');
-        };
+                `;
+              }).join('');
+            };
 
-        const renderFavorites = () => {
-          if (favorites.length === 0) {
-            content.innerHTML = '<p class="empty-state">В избранном пока пусто. Нажмите на 🤍 в карточке вакансии, чтобы сохранить её.</p>';
-            return;
-          }
-          content.innerHTML = favorites
-            .map((id) => {
-              const vacancyInfo = vacanciesData[id];
-              const displayTitle = vacancyInfo ? vacancyInfo.title : `Вакансия #${id}`;
-              const displayCompany = vacancyInfo ? vacancyInfo.company : '';
-
-              return `
-                <div class="profile-item">
-                  <div>
-                    <h3>${displayTitle}</h3>
-                    ${displayCompany ? `<p style="color: #00A88A; font-weight: 500;">${displayCompany}</p>` : ''}
+            const renderFavorites = () => {
+              if (favorites.length === 0) {
+                tabContent.innerHTML = '<p class="empty-state">В избранном пока пусто. Нажмите на 🤍 в карточке вакансии, чтобы сохранить её.</p>';
+                return;
+              }
+              tabContent.innerHTML = favorites.map(id => {
+                const info = vacanciesData[id];
+                return `
+                  <div class="profile-item">
+                    <div>
+                      <h3>${info ? info.title : 'Вакансия #' + id}</h3>
+                      ${info ? `<p style="color: #00A88A; font-weight: 500;">${info.company}</p>` : ''}
+                    </div>
+                    <a href="vacancies.html?id=${id}" class="btn btn--secondary">Перейти к вакансии</a>
                   </div>
-                  <a href="vacancies.html?id=${id}" class="btn btn--secondary">Перейти к вакансии</a>
-                </div>
-              `;
-            })
-            .join('');
-        };
+                `;
+              }).join('');
+            };
 
-        tabs.forEach((tab) => {
-          tab.addEventListener('click', () => {
-            tabs.forEach((t) => t.classList.remove('profile-tab--active'));
-            tab.classList.add('profile-tab--active');
+            tabs.forEach(tab => {
+              tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('profile-tab--active'));
+                tab.classList.add('profile-tab--active');
+                if (tab.dataset.tab === 'applications') renderApplications();
+                else renderFavorites();
+              });
+            });
 
-            if (tab.dataset.tab === 'applications') renderApplications();
-            else renderFavorites();
+            renderApplications(); // По умолчанию открываем отклики
+          })
+          .catch(() => {
+            tabContent.innerHTML = '<p class="empty-state">Ошибка загрузки данных.</p>';
           });
-        });
-
-        renderApplications();
       }
     });
   </script>

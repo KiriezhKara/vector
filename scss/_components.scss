@@ -1072,6 +1072,23 @@
   padding: 50px 0 80px;
 }
 
+// Форма входа
+.login-section {
+  background: $color-white;
+  padding: 30px;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  
+  .section-title {
+    margin-bottom: 8px;
+  }
+}
+
+// Профиль
+.profile-header {
+  margin-bottom: 30px;
+}
+
 .profile-tabs {
   display: flex;
   gap: 10px;
@@ -1114,7 +1131,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
 
   h3 {
     font-size: 1.1rem;
@@ -1132,11 +1148,10 @@
   font-weight: 600;
   padding: 4px 12px;
   border-radius: 20px;
-  white-space: nowrap;
 
   &--pending {
     background: rgba(255, 193, 7, 0.2);
-    color: #9a7400;
+    color: #d39e00;
   }
 }
 
@@ -1147,6 +1162,18 @@
   border-radius: $radius;
   color: $color-slate;
   box-shadow: $shadow;
+}
+
+// Тёмная тема для профиля
+[data-theme="dark"] {
+  .login-section,
+  .profile-item, 
+  .empty-state {
+    background: #1A1F1E;
+  }
+  .profile-tabs {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
 // ===================== АДАПТИВ ДЛЯ ЭЛЕМЕНТОВ =====================

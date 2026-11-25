@@ -12,16 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let allVacancies = [];
 
   fetch('../data/vacancies.xml')
-    .then((res) => {
-      if (!res.ok) throw new Error('Ошибка загрузки vacancies.xml');
-      return res.text();
-    })
-    .then((str) => {
+    .then(res => res.text())
+    .then(str => {
       const parser = new DOMParser();
       const xml = parser.parseFromString(str, 'application/xml');
       const nodes = xml.querySelectorAll('vacancy');
 
-      allVacancies = Array.from(nodes).map((v) => ({
+      allVacancies = Array.from(nodes).map(v => ({
         id: v.querySelector('id')?.textContent || '',
         title: v.querySelector('title')?.textContent || '',
         company: v.querySelector('company')?.textContent || '',
@@ -37,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tags: (v.querySelector('tags')?.textContent || '').split(',').filter(Boolean)
       }));
 
+      render(allVacancies);
       handleUrlParams();
-      applyFilters();
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
       grid.innerHTML = '<p>Не удалось загрузить вакансии</p>';
     });
@@ -53,72 +50,77 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+    grid.innerHTML = list.map(v => {
+      const tagsHTML = v.tags.map(tag => `<span class="vacancy-card__tag">${tag.trim()}</span>`).join('');
+      
+      let dateHTML = '';
+      if (v.date) {
+        const dateObj = new Date(v.date);
+        dateHTML = `<span>📅 ${dateObj.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })}</span>`;
+      }
 
-    grid.innerHTML = list
-      .map((v) => {
-        const tagsHTML = v.tags.map((tag) => `<span class="vacancy-card__tag">${tag.trim()}</span>`).join('');
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const isFav = favorites.includes(v.id);
+      const heartIcon = isFav ? '❤️' : '🤍';
 
-        let dateHTML = '';
-        if (v.date) {
-          const dateObj = new Date(v.date);
-          dateHTML = `<span>📅 ${dateObj.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })}</span>`;
-        }
+      const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+      const hasApplied = applications.some(app => app.id === v.id);
+      const applyBtnText = hasApplied ? 'Отклик отправлен ✓' : 'Откликнуться';
+      const applyBtnClass = hasApplied ? 'btn--secondary' : 'btn--primary';
 
-        const isFav = favorites.includes(v.id);
-        const heartIcon = isFav ? '❤️' : '🤍';
-
-        const hasApplied = applications.some((app) => app.id === v.id);
-        const applyBtnText = hasApplied ? 'Отклик отправлен ✓' : 'Откликнуться';
-        const applyBtnClass = hasApplied ? 'btn--secondary' : 'btn--primary';
-
-        return `
-          <article class="vacancy-card" data-id="${v.id}">
-            <div class="vacancy-card__header">
-              <h3 class="vacancy-card__title">${v.title}</h3>
-              <div class="vacancy-card__tags">${tagsHTML}</div>
+      return `
+        <article class="vacancy-card" data-id="${v.id}">
+          <div class="vacancy-card__header">
+            <h3 class="vacancy-card__title">${v.title}</h3>
+            <div class="vacancy-card__tags">${tagsHTML}</div>
+          </div>
+          
+          <p class="vacancy-card__company">${v.company}</p>
+          
+          <div class="vacancy-card__meta">
+            <span>📍 ${v.district}</span>
+            <span>💼 ${v.type}</span>
+            <span>📅 ${v.experience}</span>
+          </div>
+          
+          <p class="vacancy-card__salary">${v.salaryMin} – ${v.salaryMax} BYN</p>
+          <p class="vacancy-card__desc">${v.description}</p>
+          
+          <div class="vacancy-card__footer">
+            <div class="vacancy-card__info">
+              ${dateHTML}
+              <span class="vacancy-card__views">👁 ${v.views}</span>
             </div>
-
-            <p class="vacancy-card__company">${v.company}</p>
-
-            <div class="vacancy-card__meta">
-              <span>📍 ${v.district}</span>
-              <span>💼 ${v.type}</span>
-              <span>📅 ${v.experience}</span>
-            </div>
-
-            <p class="vacancy-card__salary">${v.salaryMin} – ${v.salaryMax} BYN</p>
-            <p class="vacancy-card__desc">${v.description}</p>
-
-            <div class="vacancy-card__footer">
-              <div class="vacancy-card__info">
-                ${dateHTML}
-                <span class="vacancy-card__views">👁 ${v.views}</span>
-              </div>
-              <button type="button" class="vacancy-card__fav-btn" data-id="${v.id}" aria-label="Добавить в избранное">${heartIcon}</button>
-            </div>
-
-            <div class="vacancy-card__actions">
-              <button type="button" class="btn ${applyBtnClass} vacancy-card__apply" data-id="${v.id}" data-title="${v.title}">${applyBtnText}</button>
-            </div>
-          </article>
-        `;
-      })
-      .join('');
+            <button class="vacancy-card__fav-btn" data-id="${v.id}" title="В избранное">${heartIcon}</button>
+          </div>
+          
+          <div class="vacancy-card__actions">
+            <button class="btn ${applyBtnClass} vacancy-card__apply" data-id="${v.id}" data-title="${v.title}">${applyBtnText}</button>
+          </div>
+        </article>
+      `;
+    }).join('');
 
     attachCardEvents();
   }
 
   function attachCardEvents() {
-    document.querySelectorAll('.vacancy-card__fav-btn').forEach((btn) => {
+    // Лайки
+    document.querySelectorAll('.vacancy-card__fav-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
+        
+        // ПРОВЕРКА АВТОРИЗАЦИИ
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+          alert('Пожалуйста, войдите в личный кабинет, чтобы добавлять вакансии в избранное.');
+          return;
+        }
+
         const id = btn.getAttribute('data-id');
         let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
+        
         if (favorites.includes(id)) {
-          favorites = favorites.filter((favId) => favId !== id);
+          favorites = favorites.filter(favId => favId !== id);
           btn.textContent = '🤍';
         } else {
           favorites.push(id);
@@ -128,32 +130,35 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    document.querySelectorAll('.vacancy-card__apply').forEach((btn) => {
+    // Отклики
+    document.querySelectorAll('.vacancy-card__apply').forEach(btn => {
       btn.addEventListener('click', () => {
+        // ПРОВЕРКА АВТОРИЗАЦИИ
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+          alert('Пожалуйста, войдите в личный кабинет, чтобы откликнуться на вакансию.');
+          return;
+        }
+
         const id = btn.getAttribute('data-id');
         const title = btn.getAttribute('data-title');
-
-        const applications = JSON.parse(localStorage.getItem('applications') || '[]');
-        if (!applications.some((app) => app.id === id)) {
+        
+        let applications = JSON.parse(localStorage.getItem('applications') || '[]');
+        if (!applications.some(app => app.id === id)) {
           applications.push({ id, title, date: new Date().toISOString() });
           localStorage.setItem('applications', JSON.stringify(applications));
-
+          
           btn.textContent = 'Отклик отправлен ✓';
           btn.className = 'btn btn--secondary vacancy-card__apply';
-
-          const card = btn.closest('.vacancy-card');
-          const viewsSpan = card?.querySelector('.vacancy-card__views');
+          
+          const viewsSpan = btn.closest('.vacancy-card').querySelector('.vacancy-card__views');
           if (viewsSpan) {
-            const currentViews = parseInt(viewsSpan.textContent.replace(/\D/g, ''), 10) || 0;
+            const currentViews = parseInt(viewsSpan.textContent.replace(/\D/g, '')) || 0;
             viewsSpan.textContent = `👁 ${currentViews + 1}`;
           }
-
-          if (card && !card.querySelector('.vacancy-card__status-note')) {
-            const note = document.createElement('p');
-            note.className = 'vacancy-card__desc vacancy-card__status-note';
-            note.textContent = 'Отклик сохранён в личном кабинете.';
-            card.appendChild(note);
-          }
+          
+          alert(`Вы успешно откликнулись на вакансию "${title}"! Следите за статусом в личном кабинете.`);
+        } else {
+          alert('Вы уже откликались на эту вакансию.');
         }
       });
     });
@@ -163,13 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const targetId = urlParams.get('id');
     const sphereParam = urlParams.get('sphere');
-    const queryParam = urlParams.get('q');
-
-    if (queryParam && searchInput) {
-      searchInput.value = queryParam;
-    } else if (sphereParam && searchInput) {
-      searchInput.value = sphereParam;
-    }
 
     if (targetId) {
       setTimeout(() => {
@@ -177,11 +175,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (card) {
           card.scrollIntoView({ behavior: 'smooth', block: 'center' });
           card.style.boxShadow = '0 0 0 3px #00C9A7';
-          setTimeout(() => {
-            card.style.boxShadow = '';
-          }, 2500);
+          setTimeout(() => { card.style.boxShadow = ''; }, 2500);
         }
       }, 300);
+    }
+
+    if (sphereParam) {
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.value = sphereParam;
+        applyFilters();
+      }
     }
   }
 
@@ -191,13 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const type = typeFilter?.value || '';
     const experience = experienceFilter?.value || '';
 
-    const filtered = allVacancies.filter((v) => {
-      const matchSearch =
-        !search ||
-        v.title.toLowerCase().includes(search) ||
-        v.company.toLowerCase().includes(search) ||
-        v.sphere.toLowerCase().includes(search) ||
-        v.description.toLowerCase().includes(search);
+    const filtered = allVacancies.filter(v => {
+      const matchSearch = !search || v.title.toLowerCase().includes(search);
       const matchDistrict = !district || v.district === district;
       const matchType = !type || v.type === type;
       const matchExp = !experience || v.experience === experience;
@@ -217,6 +216,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (districtFilter) districtFilter.value = '';
     if (typeFilter) typeFilter.value = '';
     if (experienceFilter) experienceFilter.value = '';
-    applyFilters();
+    render(allVacancies);
   });
 });
